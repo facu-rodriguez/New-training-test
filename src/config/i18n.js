@@ -1,13 +1,15 @@
 import i18 from 'i18next';
 
-import someCustomer from 'config/someCustomer/texts';
+import customer1 from 'config/customer1/texts';
+import customer2 from 'config/customer2/texts';
 
 const texts = {
-  someCustomer
+  customer1,
+  customer2
 };
 
 i18.init({
   lng: 'es',
   initImmediate: false,
-  resources: texts.someCustomer
+  resources: texts[process.env.REACT_APP_UTILITY_NAME]
 });

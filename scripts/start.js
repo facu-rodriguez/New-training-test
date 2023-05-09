@@ -4,7 +4,7 @@ const CONFIG = require('./config');
 const CUSTOM_ERRORS = require('./errors');
 
 // If no customer is specified, a default one is setted.
-const customer = process.argv[2] || 'someCustomer';
+const customer = process.argv[2] || 'customer1';
 
 if (!CONFIG.CUSTOMERS.includes(customer)) {
   throw new CUSTOM_ERRORS.InvalidCustomer('start');

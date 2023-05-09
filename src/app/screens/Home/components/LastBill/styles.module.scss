@@ -1,0 +1,57 @@
+@import '_colors.scss';
+@import '_general.scss';
+
+.billsListContainer {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 1px -2px 5px 3px $shadow-color;
+  width: 100%;
+}
+
+.header {
+  padding: 19px 16px 18px;
+}
+
+.billsListItem {
+  padding: 24px;
+}
+
+.dateColumn {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.amountContainer {
+  align-self: center;
+  display: flex;
+}
+
+.amountColumn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount {
+  align-items: flex-start;
+  display: flex;
+}
+
+.thousandAmount {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.decimalAmount {
+  line-height: 100%;
+  margin-left: 4px;
+}
+
+.loading {
+  max-height: 100px;
+  padding: 48px 0;
+}
+
+.statusLabel {
+  font-size: 14px !important;
+}

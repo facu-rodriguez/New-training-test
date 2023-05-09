@@ -4,13 +4,15 @@ import { completeReducer, createReducer } from 'redux-recompose';
 import { actions } from './actions';
 
 export const defaultState = {
-  quotes: []
+  accounts: [],
+  currentAccount: null
 };
 
 const reducerDescription = {
-  primaryActions: [actions.GET_QUOTES],
+  primaryActions: [actions.GET_ACCOUNTS],
   override: {
-    [actions.RESET_QUOTES]: state => Immutable.merge(state, { quotes: defaultState.quotes })
+    [actions.SET_CURRENT_ACCOUNT]: (state, action) =>
+      Immutable.merge(state, { currentAccount: action.payload })
   }
 };
 

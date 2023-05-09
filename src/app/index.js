@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import Rollbar from 'rollbar';
 import ReactGA from 'react-ga';
 import { disableReactDevTools } from '@widergy/web-utils/lib/config';
 import { EnergyThemeProvider } from '@widergy/energy-ui';
+import dayjs from 'dayjs';
 
 import App from './layout';
 import { energyUITheme } from './styles';
 
+dayjs.locale('es-AR');
 class AppContainer extends PureComponent {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class AppContainer extends PureComponent {
       captureUnhandledRejections: true,
       hostWhiteList: ['widergy.com', 'widergydev.com'],
       payload: {
-        environment: 'somecustomer'
+        environment: process.env.REACT_APP_UTILITY_NAME
       }
     });
     window.Rollbar = Rollbar;
@@ -29,11 +31,11 @@ class AppContainer extends PureComponent {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <EnergyThemeProvider theme={energyUITheme}>
           <App />
         </EnergyThemeProvider>
-      </div>
+      </Fragment>
     );
   }
 }

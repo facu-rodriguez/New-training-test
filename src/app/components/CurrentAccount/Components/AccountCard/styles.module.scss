@@ -1,0 +1,32 @@
+@import '_colors.scss';
+@import '_general.scss';
+
+$tag-width: 50px;
+
+.container {
+  border-radius: 8px;
+  display: flex;
+  margin-bottom: 12px;
+  min-height: 150px;
+  padding: 15px;
+  position: relative;
+  transition: 0.5s;
+  width: 425px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.accountNumberAndAddres {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.header {
+  margin-bottom: 12px;
+}

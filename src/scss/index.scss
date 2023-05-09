@@ -2,6 +2,80 @@
 // sass-lint:disable no-url-protocols
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,900');
 
+@mixin root-prop($prop: null, $value: null) {
+  @if ($prop and $value) {
+    #{$prop}: $value;
+	}
+}
+
+:root {
+  @include root-prop(--chart-solid-variant-1, #DD74A6);
+  @include root-prop(--chart-solid-variant-2, #83E6C7);
+  @include root-prop(--chart-solid-variant-3, #134D80);
+  @include root-prop(--chart-solid-variant-4, #D55E00);
+  @include root-prop(--chart-solid-variant-5, #5692F1);
+  @include root-prop(--chart-solid-variant-6, #000);
+  @include root-prop(--chart-solid-variant-7, #FDAA29);
+  @include root-prop(--chart-solid-variant-8, #592D9C);
+  @include root-prop(--chart-solid-variant-9, #F0E442);
+  @include root-prop(--chart-solid-variant-10, #21C7E4);
+  @include root-prop(--dark-01, #42536C);
+  @include root-prop(--dark-02, #334661);
+  @include root-prop(--dark-03, #263954);
+  @include root-prop(--dark-04, #182C49);
+  @include root-prop(--dark-05, #091E42);
+  @include root-prop(--gray-01, #B3BAC6);
+  @include root-prop(--gray-02, #A5ADBB);
+  @include root-prop(--gray-03, #8893A5);
+  @include root-prop(--gray-04, #677489);
+  @include root-prop(--gray-05, #556072);
+  @include root-prop(--light-01, #FFF);
+  @include root-prop(--light-02, #FAFBFC);
+  @include root-prop(--light-03, #F4F5F7);
+  @include root-prop(--light-04, #E4E6EA);
+  @include root-prop(--light-05, #C1C7D0);
+  @include root-prop(--semantic-success-01, #E6F9F3);
+  @include root-prop(--semantic-success-02, #C0F0E2);
+  @include root-prop(--semantic-success-03, #49D2AA);
+  @include root-prop(--semantic-success-04, #118460);
+  @include root-prop(--semantic-success-05, #055F43);
+  @include root-prop(--semantic-error-01, #FFEBEE);
+  @include root-prop(--semantic-error-02, #FECED5);
+  @include root-prop(--semantic-error-03, #FD6F85);
+  @include root-prop(--semantic-error-04, #E80C2C);
+  @include root-prop(--semantic-error-05, #A0041B);
+  @include root-prop(--semantic-warning-01, #FFF9E6);
+  @include root-prop(--semantic-warning-02, #FFEFC1);
+  @include root-prop(--semantic-warning-03, #FED24F);
+  @include root-prop(--semantic-warning-04, #A86600);
+  @include root-prop(--semantic-warning-05, #6F4708);
+  @include root-prop(--semantic-information-01, #EBF8FD);
+  @include root-prop(--semantic-information-02, #CEEDFB);
+  @include root-prop(--semantic-information-03, #6BC9F3);
+  @include root-prop(--semantic-information-04, #037DB4);
+  @include root-prop(--semantic-information-05, #035B83);
+  @include root-prop(--action-accent-01, #FDEEE7);
+  @include root-prop(--action-accent-02, #F3AB86);
+  @include root-prop(--action-accent-03, #ED804A);
+  @include root-prop(--action-accent-04, #E7560D);
+  @include root-prop(--action-accent-05, #9E3800);
+  @include root-prop(--action-neutral-01, #EAEAEA);
+  @include root-prop(--action-neutral-02, #CBCBCB);
+  @include root-prop(--action-neutral-03, #636363);
+  @include root-prop(--action-neutral-04, #313130);
+  @include root-prop(--action-neutral-05, #0F0F0F);
+  @include root-prop(--action-error-01, #FFEBEE);
+  @include root-prop(--action-error-02, #FECED5);
+  @include root-prop(--action-error-03, #FD6F85);
+  @include root-prop(--action-error-04, #E80C2C);
+  @include root-prop(--action-error-05, #A0041B);
+  @include root-prop(--action-negative-01, rgba(255, 255, 255, 0.1));
+  @include root-prop(--action-negative-02, rgba(255, 255, 255, 0.25));
+  @include root-prop(--action-negative-03, rgba(255, 255, 255, 0.5));
+  @include root-prop(--action-negative-04, #FFF);
+  @include root-prop(--action-negative-05, #FFF);
+}
+
 html,
 body {
   font-family: 'Poppins', sans-serif;
