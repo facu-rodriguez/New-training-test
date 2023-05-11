@@ -1,9 +1,9 @@
-import customer1 from 'config/customer1/config';
-import customer2 from 'config/customer2/config';
+import idinir from 'config/idinir/config';
+import segba from 'config/segba/config';
 
 const configs = {
-  customer1,
-  customer2
+  idinir,
+  segba
 };
 
 export default configs[process.env.REACT_APP_UTILITY_NAME];

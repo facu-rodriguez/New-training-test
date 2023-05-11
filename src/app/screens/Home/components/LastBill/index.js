@@ -5,7 +5,7 @@ import { bool } from 'prop-types';
 import dayjs from 'dayjs';
 import { objectIsEmpty } from '@widergy/web-utils/lib/object';
 
-import { billTypes } from 'types/billsTypes';
+import { billType } from 'types/billsTypes';
 
 import styles from './styles.module.scss';
 import { DATE_FORMAT } from './constants';
@@ -69,7 +69,7 @@ const LastBill = ({ currentBill, loading, withIssueDate }) => {
 };
 
 LastBill.propTypes = {
-  currentBill: billTypes,
+  currentBill: billType,
   loading: bool,
   withIssueDate: bool
 };

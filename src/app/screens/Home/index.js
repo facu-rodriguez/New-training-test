@@ -12,8 +12,8 @@ import { BILLS_HISTORY } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
-import { billTypes } from 'types/billsTypes';
-import { accountTypes } from 'types/accountTypes';
+import { billType } from 'types/billsTypes';
+import { accountType } from 'types/accountTypes';
 
 import LastBill from './components/LastBill';
 import styles from './styles.module.scss';
@@ -65,11 +65,11 @@ const Home = ({
 };
 
 Home.propTypes = {
-  accounts: arrayOf(accountTypes),
+  accounts: arrayOf(accountType),
   accountsError: string,
   accountsLoading: bool,
-  currentAccount: accountTypes,
-  lastBill: billTypes,
+  currentAccount: accountType,
+  lastBill: billType,
   lastBillError: string,
   lastBillloading: bool
 };

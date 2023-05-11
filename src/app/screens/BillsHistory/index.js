@@ -6,7 +6,7 @@ import { bool } from 'prop-types';
 
 import UTLoading from 'app/components/UTLoading';
 import BillsActions from 'redux/bills/actions';
-import { billTypes } from 'types/billsTypes';
+import { billType } from 'types/billsTypes';
 
 import { columns } from './constants';
 import styles from './styles.module.scss';
@@ -44,7 +44,7 @@ const Bills = ({ bills, loading, dispatch }) => {
 };
 
 Bills.propTypes = {
-  bills: billTypes,
+  bills: billType,
   loading: bool
 };
 
