@@ -14,9 +14,11 @@ $margin-size: 40px;
 
 .content {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: $margin-size;
   width: 100%;
+  grid-row-gap: $margin-size;
 }
 
 .rightSection {
@@ -37,4 +39,9 @@ $margin-size: 40px;
 
 .billsListButton {
   @extend %buttons;
+}
+
+.accountsListButton {
+  @extend %buttons;
+  height: 200px;
 }

@@ -1,0 +1,76 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import '_general.scss';
+
+$primary-color: #182C49;
+$secondary-color: #677489;
+$hover-color: hsla(217, 14%, 47%, 0.094);
+$shadow-color: rgba(0, 0, 0, 0.2);
+$gradient1-color: rgba(224, 99, 99, 1);
+$gradient2-color: rgba(90, 129, 226, 1);
+$gradient3-color: rgba(43, 191, 221, 1);
+
+
+$item-height: 250px;
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: calc(100% - #{$topbar-heigth});
+  justify-content: space-evenly;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.title {
+  font-size: #{$large};
+  padding: 40px 20px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.item {
+  width: 40%;
+  border: 1px solid $secondary-color;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  padding: 20px;
+  box-shadow: 1px 2px 10px $shadow-color;
+  height: $item-height;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: linear-gradient(0deg, $gradient1-color 21%, $gradient2-color 81%, $gradient3-color 100%);
+  background-size: 8px $item-height;
+  background-repeat: no-repeat;
+}
+
+.item:hover {
+  background-color: $hover-color;
+}
+
+.titular {
+  font-weight: 500;
+  font-size: #{$large};
+  color: $primary-color;
+  height: min-content;
+  margin-bottom: 8px;
+}
+
+%secondary {
+  color: $secondary-color;
+}
+
+.location {
+  @extend %secondary;
+  font-size: #{$medium};
+  height: min-content;
+  margin-bottom: 10px;
+}
+
+.cardInfo {
+  height: min-content;
+}
