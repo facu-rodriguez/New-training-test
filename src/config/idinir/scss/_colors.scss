@@ -1,0 +1,41 @@
+$black: #333;
+$white: #FFF;
+$gray: rgba(0, 0, 0, 0.54);
+$disabled-gray: #D5D3D3;
+$divider-base: rgba(236, 219, 219, 0.15);
+$input-primary: #00D564;
+$loading-base: #E3C688;
+$error: #F44336;
+$primary-button: #917E56;
+$primary-button-hover: #B09D74;
+$primary-text-button-hover: #D0F7E2;
+$topbar-background: #9C7E40;
+
+$primary-variant-1: #FF9705;
+$primary-variant-2: #EEAB4C;
+$primary-variant-3: #EEBB4C;
+
+$light-01: #E6DCC2;
+$gradient-vertical: 'linear-gradient(90deg, rgba(208,183,52,1) 6%, rgba(253,115,29,1) 41%, rgba(177,128,0,1) 73%)';
+$account-status-action-card: #FD731D;
+
+$shadow-color: #BFC3C8;
+
+// sass-lint:disable no-misspelled-properties
+// sass-lint:disable property-sort-order
+:export {
+  black: $black;
+  white: $white;
+  gray: $gray;
+  disabledGray: $disabled-gray;
+  dividerBase: $divider-base;
+  inputPrimary: $input-primary;
+  loadingBase: $loading-base;
+  error: $error;
+  primaryButton: $primary-button;
+  primaryButtonHover: $primary-button-hover;
+  primaryTextButtonHover: $primary-text-button-hover;
+  gradientVertical: $gradient-vertical;
+  light01: $light-01;
+  accountStatusActionCard: $account-status-action-card;
+}

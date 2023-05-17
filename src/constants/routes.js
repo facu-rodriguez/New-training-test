@@ -1,2 +1,2 @@
 export const HOME = '/';
-export const QUOTES = '/quotes';
+export const BILLS_HISTORY = '/historico_de_facturas';

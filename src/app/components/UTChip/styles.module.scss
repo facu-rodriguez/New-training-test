@@ -1,0 +1,54 @@
+@import '_colors.scss';
+@import '_general.scss';
+
+%container {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 8px;
+  width: fit-content;
+}
+
+.warningContainer {
+  @extend %container;
+  background-color: var(--semantic-warning-01);
+
+  > svg {
+    fill: var(--semantic-warning-05);
+  }
+}
+
+.errorContainer {
+  @extend %container;
+  background-color: var(--semantic-error-01);
+
+  > svg {
+    fill: var(--semantic-error-05);
+  }
+}
+
+.successContainer {
+  @extend %container;
+  background-color: var(--semantic-success-01);
+
+  > svg {
+    fill: var(--semantic-success-05);
+  }
+}
+
+.grayContainer {
+  @extend %container;
+  background-color: var(--light-03);
+
+  > svg {
+    fill: var(--gray-05);
+  }
+}
+
+.icon {
+  height: 1rem;
+  margin-right: 4px;
+  width: 1rem;
+}

@@ -1,12 +1,11 @@
 @import 'scss/variables/_sizes.scss';
 @import '_colors.scss';
 
-$shadow: 0 0 7px 0 rgba(122, 122, 122, 0.81);
+$icon-size: 30px;
 
 .container {
   align-items: center;
-  background-color: $topbar-background;
-  box-shadow: $shadow;
+  background-color: $primary-variant-3;
   display: flex;
   height: $topbar-heigth;
   justify-content: space-between;
@@ -16,4 +15,15 @@ $shadow: 0 0 7px 0 rgba(122, 122, 122, 0.81);
 
 .logo {
   height: calc(#{$topbar-heigth} - 40px);
+}
+
+.homeIcon {
+  cursor: pointer;
+  fill: $white;
+  height: $icon-size;
+  width: $icon-size;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }

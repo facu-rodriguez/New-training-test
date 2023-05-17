@@ -1,16 +1,11 @@
-import { actions as charactersActions } from 'redux/characters/actions';
+import { actions as accountsActions } from 'redux/accounts/actions';
 import { event } from 'utils/analyticsUtils';
 
 import { categories, actions, labels } from './analytics';
 
-const getQuotesSuccess = action =>
-  event(
-    categories.PERSONAJES,
-    actions.RECUPERAR_PERSONAJES,
-    labels.RECUPERAR_PERSONAJES_OK,
-    action.payload && action.payload.length
-  );
+const getAccountsSuccess = () =>
+  event(categories.CUENTAS, actions.RECUPERAR_CUENTAS, labels.RECUPERAR_CUENTAS_OK);
 
 export default {
-  [charactersActions.GET_QUOTES_SUCESS]: getQuotesSuccess
+  [accountsActions.GET_ACCOUNTS]: getAccountsSuccess
 };

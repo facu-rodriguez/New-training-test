@@ -1,16 +1,40 @@
 @import 'scss/variables/_sizes.scss';
 @import '_colors.scss';
 
+$margin-size: 40px;
+
 .container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100% - #{$topbar-heigth});
-  justify-content: flex-start;
-  padding: 40px 20px;
+  justify-content: space-between;
+  padding: 40px;
   width: 100%;
 }
 
-.action {
-  margin: 40px;
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $margin-size;
+  width: 100%;
+}
+
+.rightSection {
+  display: flex;
+  width: 45%;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+}
+
+%buttons {
+  height: 100%;
+}
+
+.billsListButton {
+  @extend %buttons;
 }

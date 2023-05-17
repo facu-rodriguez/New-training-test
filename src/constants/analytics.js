@@ -1,11 +1,11 @@
 export const categories = {
-  PERSONAJES: 'Personajes'
+  CUENTAS: 'Cuentas'
 };
 
 export const actions = {
-  RECUPERAR_PERSONAJES: 'Se solicito recuperar personajes'
+  RECUPERAR_CUENTAS: 'Se solicito recuperar las cuentas'
 };
 
 export const labels = {
-  RECUPERAR_PERSONAJES_OK: 'Se recuperaron correctamente los personajes'
+  RECUPERAR_CUENTAS_OK: 'Se recuperaron correctamente las cuentas'
 };

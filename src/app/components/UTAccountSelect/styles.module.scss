@@ -1,0 +1,47 @@
+@import '_colors.scss';
+
+$button-size: 32px;
+$search-icon-size: 20px;
+
+.button {
+  height: $button-size;
+  margin-right: 8px;
+  width: $button-size;
+}
+
+.arrow {
+  padding: 5px;
+}
+
+.input {
+  width: calc(100% - 40px);
+}
+
+.searchField {
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 10px;
+  outline: 0;
+  padding: 0 15px;
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  height: $search-icon-size;
+  margin-right: 10px;
+  width: $search-icon-size;
+}
+
+.menuList {
+  padding-right: 10px;
+  width: 100%;
+}
+
+.menuPaper {
+  width: 350px;
+}
+
+.accountSelect {
+  align-items: center;
+  display: flex;
+}

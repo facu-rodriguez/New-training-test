@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "4.0.2",
-    "@widergy/energy-ui": ">=0.8.0",
+    "@material-ui/core": "4.4.0",
+    "@material-ui/icons": "^3.0.1",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.3",
+    "@widergy/energy-ui": "^2.0.0",
     "@widergy/utilitygo-forms-web": "^0.10.3",
     "@widergy/web-utils": ">=0.12.0",
     "apisauce": ">=0.14.1",
@@ -36,7 +39,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "husky": ">=0.14.3",
+    "husky": "4.0.0-beta.5",
     "prettier": "^1.7.4",
     "prettier-eslint": "^8.2.1",
     "react-scripts": "3.0.1",
@@ -55,6 +58,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "resolutions": {
+    "@widergy/energy-ui": "^2.0.0"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -63,7 +69,8 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-diff && yarn sass-lint"
+      "pre-commit": "yarn lint-diff && yarn sass-lint && node branch-name-hook",
+      "commit-msg": "commitlint -E  HUSKY_GIT_PARAMS"
     }
   }
 }

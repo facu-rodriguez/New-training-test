@@ -9,7 +9,8 @@ import { fetchMiddleware } from 'redux-recompose';
 
 import eventDefinitions from 'constants/eventDefinitions';
 
-import { reducer as characters } from './characters/reducer';
+import { reducer as accounts } from './accounts/reducer';
+import { reducer as bills } from './bills/reducer';
 
 export const history = createBrowserHistory();
 
@@ -34,7 +35,8 @@ const form = formReducer.plugin({
 });
 
 const reducers = combineReducers({
-  characters,
+  accounts,
+  bills,
   router: connectRouter(history),
   form
 });
