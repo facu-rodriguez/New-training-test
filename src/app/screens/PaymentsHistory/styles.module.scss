@@ -1,0 +1,35 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import '_general.scss';
+
+$border: 1px solid #000;
+
+.title {
+  font-size: #{$large};
+  padding-top: 40px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+
+.tableRow {
+  display: flex;
+  flex-direction: row;
+  border: $border;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.tableRow:last-child {
+  border-bottom: $border;
+}
+
+.rowItem {
+  border-right: $border;
+  padding: 10px;
+  width: 1000px;
+}

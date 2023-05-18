@@ -14,5 +14,8 @@ export default {
   },
   billsHistory: {
     enabled: false
+  },
+  paymentsHistory: {
+    fields: ['datetime', 'payment_method', 'status_label']
   }
 };
