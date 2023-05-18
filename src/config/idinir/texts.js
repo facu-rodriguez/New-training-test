@@ -15,6 +15,12 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    AccountList: {
+      intro: 'El servicio se encuentra',
+      ACTIVO: 'activo',
+      SUSPENDIDO: 'supendido',
+      BAJA: 'dado de baja'
     }
   }
 };

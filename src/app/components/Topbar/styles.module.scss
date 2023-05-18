@@ -17,11 +17,16 @@ $icon-size: 30px;
   height: calc(#{$topbar-heigth} - 40px);
 }
 
-.homeIcon {
+.icon {
   cursor: pointer;
   fill: $white;
   height: $icon-size;
+  margin-right: 8px;
   width: $icon-size;
+
+  &:nth-of-type(2) {
+    margin-right: auto;
+  }
 
   &:hover {
     opacity: 0.5;

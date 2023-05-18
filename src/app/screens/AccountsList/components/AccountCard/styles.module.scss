@@ -1,0 +1,92 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
+@import '_general.scss';
+@import '_colors.scss';
+
+$gray: #808080;
+
+button {
+  background-color: unset;
+  border: unset;
+  padding: 0;
+  text-align: left;
+
+  .account_card {
+    align-items: flex-start;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    width: 100%;
+
+    &-active {
+      @extend .account_card;
+      border: 2px solid $input-primary !important; //sass-lint:disable-line no-important
+      cursor: unset;
+    }
+
+    .flare {
+      background: linear-gradient($input-primary, $error);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 6px;
+    }
+
+    .data_container {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
+
+      .title {
+        font-size: $large !important; //sass-lint:disable-line no-important
+        font-weight: 500 !important; //sass-lint:disable-line no-important
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .owner,
+      .id_relation {
+        color: $gray;
+        font-weight: 400;
+      }
+
+      .owner {
+        margin-bottom: 32px;
+      }
+
+      .status {
+        border-radius: 4px;
+        font-size: $small;
+        margin-left: auto;
+        padding: 4px 8px;
+
+        &-ACTIVO {
+          @extend .status;
+          background-color: $primary-text-button-hover;
+          color: $input-primary;
+        }
+
+        &-SUSPENDIDO {
+          @extend .status;
+          background-color: $primary-variant-3;
+          color: $account-status-action-card;
+        }
+
+        &-BAJA {
+          @extend .status;
+          background-color: $error;
+        }
+      }
+    }
+  }
+
+  @media #{$desktop} {
+    .account_card {
+      width: calc(50% - 8px);
+    }
+  }
+}

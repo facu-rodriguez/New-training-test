@@ -5,10 +5,9 @@ import Menu from '@material-ui/core/Menu';
 import { UTButton, UTTextInput } from '@widergy/energy-ui';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import SearchIcon from '@material-ui/icons/Search';
-import { arrayOf, bool } from 'prop-types';
+import { array, bool } from 'prop-types';
 
 import AccountActions from 'redux/accounts/actions';
-import { accountType } from 'types/accountTypes';
 
 import AccountSelectOption from './components/AccountSelectOption';
 import { getFilteredAccounts } from './utils';
@@ -57,7 +56,11 @@ const UTAccountSelect = ({ accounts = [], disabled, dispatch }) => {
           </div>
         </div>
         {filteredAccounts.map(account => (
-          <AccountSelectOption account={account} key={account.id} onSelectAccount={handleSelectAccount} />
+          <AccountSelectOption
+            account={account}
+            key={account.cuenta_id}
+            onSelectAccount={handleSelectAccount}
+          />
         ))}
       </Menu>
     </div>
@@ -65,7 +68,8 @@ const UTAccountSelect = ({ accounts = [], disabled, dispatch }) => {
 };
 
 UTAccountSelect.propTypes = {
-  accounts: arrayOf(accountType),
+  // eslint-disable-next-line react/forbid-prop-types
+  accounts: array,
   disabled: bool
 };
 
