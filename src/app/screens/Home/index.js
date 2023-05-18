@@ -8,7 +8,7 @@ import { objectIsEmpty } from '@widergy/web-utils/lib/object';
 import i18 from 'i18next';
 import DescriptionIcon from '@material-ui/icons/Description';
 
-import { BILLS_HISTORY } from 'constants/routes';
+import { BILLS_HISTORY, PAYMENTS_HISTORY } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
@@ -55,6 +55,15 @@ const Home = ({
               </div>
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
+              </div>
+              <div className={styles.leftSection}>
+                <UTButton
+                  onClick={() => dispatch(push(PAYMENTS_HISTORY))}
+                  classNames={{ root: styles.paymentsListButton }}
+                  Icon={DescriptionIcon}
+                >
+                  Listado de Pagos
+                </UTButton>
               </div>
             </div>
           </Fragment>
