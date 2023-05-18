@@ -11,14 +11,14 @@ button {
   border: unset;
   padding: 0;
   text-align: left;
+  width: 100%;
+  cursor: pointer;
 
   .account_card {
     align-items: flex-start;
-    cursor: pointer;
     display: flex;
     flex-flow: row nowrap;
     position: relative;
-    width: 100%;
 
     &-active {
       @extend .account_card;
@@ -85,8 +85,6 @@ button {
   }
 
   @media #{$desktop} {
-    .account_card {
-      width: calc(50% - 8px);
-    }
+    width: calc(50% - 8px);
   }
 }
