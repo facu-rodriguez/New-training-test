@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 
 const capitalize = str => str[0].toUpperCase() + str.slice(1).toLowerCase();
 
-const Accounts = ({ accounts, loading, dispatch }) => {
+const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
   useEffect(() => {
     dispatch(AccountsActions.getAccounts());
   }, []);
@@ -22,19 +22,22 @@ const Accounts = ({ accounts, loading, dispatch }) => {
       <div className={styles.container}>
         <UTLoading loading={loading}>
           {// eslint-disable-next-line camelcase
-          accounts.map(({ titular, direccion, localidad, partido, relacion, descripcion_estado: status }) => (
-            <div className={styles.item}>
+          accounts.map(account => (
+            <button
+              className={account.cuenta_id === currentAccount.cuenta_id ? styles.currentItem : styles.item}
+              onClick={() => dispatch(AccountsActions.setCurrentAccount(account))}
+            >
               <div className={styles.cardTitle}>
-                <UTLabel classes={{ root: styles.titular }}>{titular}</UTLabel>
+                <UTLabel classes={{ root: styles.titular }}>{account.titular}</UTLabel>
                 <UTLabel classes={{ root: styles.location }}>
-                  {direccion}, {localidad}, {partido}
+                  | {account.direccion}, {account.localidad}, {account.partido}
                 </UTLabel>
               </div>
               <div className={styles.cardInfo}>
-                <UTLabel>Relacion: {capitalize(relacion)}</UTLabel>
-                <UTLabel>Estado: {status}</UTLabel>
+                <UTLabel>Relacion: {capitalize(account.relacion)}</UTLabel>
+                <UTLabel>Estado: {account.descripcion_estado}</UTLabel>
               </div>
-            </div>
+            </button>
           ))}
         </UTLoading>
       </div>
@@ -44,12 +47,14 @@ const Accounts = ({ accounts, loading, dispatch }) => {
 
 Accounts.propTypes = {
   accounts: accountType,
-  loading: bool
+  loading: bool,
+  currentAccount: accountType
 };
 
 const mapStateToProps = store => ({
   accounts: store.accounts.accounts,
-  loading: store.accounts.accountsLoading
+  loading: store.accounts.accountsLoading,
+  currentAccount: store.accounts.currentAccount
 });
 
 export default connect(mapStateToProps)(Accounts);

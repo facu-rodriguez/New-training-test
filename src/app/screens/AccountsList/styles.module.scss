@@ -4,12 +4,12 @@
 
 $primary-color: #182C49;
 $secondary-color: #677489;
-$hover-color: hsla(217, 14%, 47%, 0.094);
+$hover-color: hsla(217, 14%, 47%, 0.15);
 $shadow-color: rgba(0, 0, 0, 0.2);
+$gold-color: rgb(255, 217, 0);
 $gradient1-color: rgba(224, 99, 99, 1);
 $gradient2-color: rgba(90, 129, 226, 1);
 $gradient3-color: rgba(43, 191, 221, 1);
-
 
 $item-height: 250px;
 
@@ -46,6 +46,11 @@ $item-height: 250px;
   background: linear-gradient(0deg, $gradient1-color 21%, $gradient2-color 81%, $gradient3-color 100%);
   background-size: 8px $item-height;
   background-repeat: no-repeat;
+}
+
+.currentItem {
+  @extend .item;
+  box-shadow: 0 0 30px $gold-color;
 }
 
 .item:hover {
