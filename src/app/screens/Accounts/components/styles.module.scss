@@ -1,0 +1,89 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
+@import '_colors.scss';
+
+$margin-size: 40px;
+$tag-width: 50px;
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 6px 12px $box-shadow;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 6px);
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.card:hover {
+  background-color: $shadow-color;
+}
+
+.cardActive {
+  background-color: $shadow-color;
+}
+
+.content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.gradient {
+  background: $default-gradient;
+  min-height: 100%;
+  width: 6px;
+}
+
+@if variable-exists(gradient-vertical) {
+  .gradient {
+    background: $gradient-vertical;
+  }
+}
+
+.header {
+  margin-bottom: 4px;
+}
+
+.tag {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+
+  span {
+    padding: 3px 15px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}
+
+.tagActivated {
+  background-color: var(--semantic-success-01);
+  color: var(--semantic-success-05);
+}
+
+.tagUnsubscribe {
+  background-color: var(--light-04);
+  color: var(--gray-04);
+}
+
+.tagSuspended {
+  background-color: var(--semantic-error-02);
+  color: var(--semantic-error-05);
+}
+
+@media #{$desktop-tablet} {
+  .card {
+    width: calc(50% - 20px);
+    margin: 10px;
+  }
+}

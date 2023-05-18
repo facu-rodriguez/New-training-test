@@ -17,6 +17,15 @@ $primary-variant-3: #0083D5;
 
 $shadow-color: #BFC3C8;
 
+$box-shadow: rgba(24, 44, 73, 0.1);
+
+$c1: #24BAE5;
+$c2: #072D8F;
+$c3: #6E518F;
+$c4: #CC1B34;
+
+$default-gradient: linear-gradient(180deg, $c1 0, $c2 30.21%, $c3 61.98%, $c4 96.87%);
+
 // sass-lint:disable no-misspelled-properties
 // sass-lint:disable property-sort-order
 :export {

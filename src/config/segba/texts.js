@@ -15,6 +15,10 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    Accounts: {
+      goToAccounts: 'VER LISTADO DE TODAS LAS CUENTAS',
+      goBack: 'Volver'
     }
   }
 };

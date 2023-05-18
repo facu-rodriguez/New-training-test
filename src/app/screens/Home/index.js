@@ -7,8 +7,9 @@ import { arrayOf, bool, string } from 'prop-types';
 import { objectIsEmpty } from '@widergy/web-utils/lib/object';
 import i18 from 'i18next';
 import DescriptionIcon from '@material-ui/icons/Description';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
-import { BILLS_HISTORY } from 'constants/routes';
+import { BILLS_HISTORY, LIST_OF_ACCOUNTS } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
@@ -43,6 +44,13 @@ const Home = ({
         ) : (
           <Fragment>
             <CurrentAccount currentAccount={currentAccount} />
+            <UTButton
+              onClick={() => dispatch(push(LIST_OF_ACCOUNTS))}
+              classNames={{ root: styles.accountsButton }}
+              Icon={AssignmentIcon}
+            >
+              {i18.t('Accounts:goToAccounts')}
+            </UTButton>
             <div className={styles.content}>
               <div className={styles.leftSection}>
                 <UTButton

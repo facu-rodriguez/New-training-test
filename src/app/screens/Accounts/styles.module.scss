@@ -1,0 +1,54 @@
+@import 'scss/variables/_sizes.scss';
+@import '_colors.scss';
+@import 'scss/variables/_mediaQueries.scss';
+
+$margin-size: 40px;
+
+.container {
+  padding: 40px;
+  width: 100%;
+}
+
+.accountsButton {
+  align-items: center;
+  background-color: $primary-variant-3 !important;
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.accountsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.accountsTitle {
+  margin-top: 40px;
+  color: $black;
+  font-size: 1.5rem;
+  font-family: Poppins;
+  font-weight: 600;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media #{ $desktop-tablet } {
+  .accountsTitle {
+    margin-top: 20px;
+  }
+
+  .accountsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
