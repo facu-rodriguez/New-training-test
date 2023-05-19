@@ -1,0 +1,16 @@
+@import 'scss/variables/_sizes.scss';
+@import '_general.scss';
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100% - #{$topbar-heigth});
+  justify-content: space-around;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+}

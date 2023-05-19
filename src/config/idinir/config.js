@@ -1,4 +1,5 @@
 import Colors from './scss/_colors.scss';
+import { columns as PaymentColumns } from './paymentColumns';
 
 export default {
   Colors,
@@ -14,5 +15,6 @@ export default {
   },
   billsHistory: {
     enabled: true
-  }
+  },
+  PaymentColumns
 };

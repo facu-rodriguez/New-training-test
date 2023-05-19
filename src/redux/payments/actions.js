@@ -2,7 +2,7 @@ import { createTypes, completeTypes } from 'redux-recompose';
 
 import PaymentService from 'services/PaymentService';
 
-export const actions = createTypes(completeTypes(['GET_PAYMENTS']), '@@ACCOUNTS');
+export const actions = createTypes(completeTypes(['GET_PAYMENTS', 'SET_SELECTED_PAYMENT']), '@@PAYMENTS');
 
 const privateActionCreators = {
   getPaymentsSuccess: payload => ({ type: actions.GET_PAYMENTS_SUCCESS, payload, target: 'payments' }),
@@ -18,7 +18,9 @@ export const actionCreators = {
     } else {
       dispatch(privateActionCreators.getPaymentsFailure(response.data.error));
     }
-  }
+  },
+  setSelectedPayment: payment => dispatch =>
+    dispatch({ type: actions.SET_SELECTED_PAYMENT, payload: payment })
 };
 
 export default actionCreators;

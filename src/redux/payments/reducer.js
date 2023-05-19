@@ -8,8 +8,10 @@ export const defaultState = {
 };
 
 const reducerDescription = {
-  primaryActions: [actions.GET_PAYMENTS],
-  override: {}
+  primaryActions: [actions.GET_PAYMENTS, actions.SET_SELECTED_PAYMENT],
+  override: {
+    [actions.SET_SELECTED_PAYMENT]: (state, action) => Immutable.merge(state, { payment: action.payload })
+  }
 };
 
 export const reducer = createReducer(Immutable(defaultState), completeReducer(reducerDescription));

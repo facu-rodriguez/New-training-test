@@ -1,0 +1,90 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import '_colors.scss';
+@import '_general.scss';
+
+.container {
+  padding: 16px;
+
+  .account_card {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4px; //sass-lint:disable-line no-misspelled-properties
+    margin: 62px auto;
+    max-width: 350px;
+    min-width: 250px;
+    position: relative;
+
+    .title {
+      font-size: $large;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .flare {
+      background: linear-gradient($input-primary, $error);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 6px;
+    }
+
+    .label {
+      font-weight: 500;
+    }
+
+    .detail {
+      color: $gray;
+      font-weight: 300;
+    }
+
+    .detailsContainer {
+      .label {
+        font-weight: 500;
+      }
+
+      .detail {
+        color: $gray;
+        font-weight: 300;
+      }
+
+      &-date,
+      &-amount {
+        align-items: center;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin: 8px auto;
+        width: 100%;
+      }
+    }
+
+    .status {
+      border-radius: 4px;
+      font-size: $small;
+      margin-left: auto;
+      padding: 4px 8px;
+
+      &-approved {
+        @extend .status;
+        background-color: $primary-text-button-hover;
+        color: $input-primary;
+      }
+
+      &-pending {
+        @extend .status;
+        background-color: $primary-variant-3;
+        color: $account-status-action-card;
+      }
+
+      &-declined {
+        @extend .status;
+        background-color: $error;
+      }
+    }
+  }
+}

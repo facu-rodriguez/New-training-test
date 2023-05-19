@@ -15,6 +15,16 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    Payments: {
+      paymentsTitle: 'Listado de pagos',
+      datetime: 'Fecha',
+      client_number: 'Nro. de cliente',
+      status_label: 'Estado',
+      amount: 'Monto',
+      payment_code: 'Código de pago',
+      payment_method: 'Método de pago',
+      detailsTitle: 'Detalles del pago'
     }
   }
 };
