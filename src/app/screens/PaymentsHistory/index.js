@@ -50,7 +50,7 @@ const PaymentsHistory = ({ payments, paymentsError, paymentsLoading, dispatch })
           columns={appConfig.PaymentColumns}
           data={formattedPayments}
           disableAutoOrder
-          tableTitle={i18.t('Payments:detailsTitle')}
+          tableTitle={i18.t('Payments:paymentsTitle')}
           disablePagination
           onRowClick={handleClick}
         />
