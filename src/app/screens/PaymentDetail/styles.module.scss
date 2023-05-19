@@ -16,6 +16,7 @@
   align-items: center;
   background-color: $primary-variant-2;
   padding: 10px 0;
+
   h1 {
     text-align: center;
     font-size: 1.5rem;
@@ -27,11 +28,13 @@
 .detailPaymentRow {
   display: flex;
   flex-direction: column;
+
   .detailPaymentColumnLeft {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 0 20px;
+
     span {
       text-align: center;
       font-size: 1rem;
@@ -40,11 +43,13 @@
       margin-top: 20px;
     }
   }
+
   .detailPaymentColumnRight {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 0 20px;
+
     span {
       text-align: center;
       font-size: 1rem;
@@ -73,6 +78,7 @@
   margin-top: 20px;
   padding: 7px 0;
   width: 100%;
+
   span {
     text-align: center;
     font-size: 1.2rem;
@@ -90,14 +96,17 @@
     .detailPaymentColumnLeft {
       justify-content: flex-start;
       padding-left: 20px;
+
       span {
         font-size: 1.3rem;
         margin-top: 20px;
       }
     }
+
     .detailPaymentColumnRight {
       justify-content: flex-end;
       padding-right: 20px;
+
       span {
         text-align: end;
         font-size: 1.3rem;
@@ -105,8 +114,10 @@
       }
     }
   }
+
   .detailPaymentTotal {
     margin-top: 40px;
+
     span {
       font-size: 1.4rem;
     }

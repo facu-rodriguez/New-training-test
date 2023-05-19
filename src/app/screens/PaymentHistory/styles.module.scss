@@ -14,30 +14,31 @@
 }
 
 .tableContainer {
-  color: black;
+  color: $black;
   width: 100%;
 }
 
 .headerCell {
-  color: $blackTable;
+  color: $black-table;
   font-size: 0.9rem !important;
 }
 
 .rowElement {
   span {
-    color: $blackTable;
+    color: $black-table;
     font-size: 0.85rem;
   }
 }
 
-.rowHover:hover{
+.rowHover:hover {
   background-color: $disabled-gray !important;
 }
-.rowHoverr:hover{
+
+.rowHoverr:hover {
   background-color: $disabled-gray;
 }
 
-.paymentsButton{
+.paymentsButton {
   margin: 40px 0 0 40px;
   align-items: center;
   background-color: $primary-variant-3 !important;
