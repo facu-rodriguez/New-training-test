@@ -11,6 +11,7 @@ import eventDefinitions from 'constants/eventDefinitions';
 
 import { reducer as accounts } from './accounts/reducer';
 import { reducer as bills } from './bills/reducer';
+import { reducer as payments } from './payment/reducer';
 
 export const history = createBrowserHistory();
 
@@ -37,6 +38,7 @@ const form = formReducer.plugin({
 const reducers = combineReducers({
   accounts,
   bills,
+  payments,
   router: connectRouter(history),
   form
 });

@@ -15,6 +15,21 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    Payments: {
+      goBack: 'Volver',
+      goToPayments: 'Ver facturas pagadas',
+      noPayments: 'No hay facturas pagadas',
+      tableTitle: 'Facturas pagadas',
+      keys: {
+        datetime: 'Fecha de pago',
+        client_number: 'Nº de cliente',
+        status_label: 'Estado',
+        amount: 'Monto',
+        payment_method: 'Método de pago'
+      },
+      detailTitle: 'DETALLE',
+      detailTotal: 'TOTAL'
     }
   }
 };

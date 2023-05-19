@@ -1,0 +1,54 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
+@import '_general.scss';
+@import '_colors.scss';
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100% - #{$topbar-heigth});
+  justify-content: space-around;
+  padding: 40px 10px;
+  width: 100%;
+}
+
+.tableContainer {
+  color: black;
+  width: 100%;
+}
+
+.headerCell {
+  color: $blackTable;
+  font-size: 0.9rem !important;
+}
+
+.rowElement {
+  span {
+    color: $blackTable;
+    font-size: 0.85rem;
+  }
+}
+
+.rowHover:hover{
+  background-color: $disabled-gray !important;
+}
+.rowHoverr:hover{
+  background-color: $disabled-gray;
+}
+
+.paymentsButton{
+  margin: 40px 0 0 40px;
+  align-items: center;
+  background-color: $primary-variant-3 !important;
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+@media #{$desktop-tablet} {
+  .tableContainer {
+    width: initial;
+  }
+}

@@ -38,3 +38,15 @@ $margin-size: 40px;
 .billsListButton {
   @extend %buttons;
 }
+
+.paymentButton {
+  margin-top: 40px;
+  align-items: center;
+  background-color: $primary-variant-2 !important;
+  display: flex;
+  height: $topbar-heigth;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  cursor: pointer;
+}
