@@ -3,6 +3,7 @@
 @import '_general.scss';
 
 $border: 1px solid #000;
+$hover-color: hsla(0, 0%, 0%, 0.247);
 
 .title {
   font-size: #{$large};
@@ -26,6 +27,10 @@ $border: 1px solid #000;
 
 .tableRow:last-child {
   border-bottom: $border;
+}
+
+.tableRow:hover {
+  background-color: $hover-color;
 }
 
 .rowItem {

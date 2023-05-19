@@ -5,12 +5,16 @@ import { actions } from './actions';
 
 export const defaultState = {
   paymentsHistory: [],
-  paymentsHistoryLoading: false
+  paymentsHistoryLoading: false,
+  currentPayment: null
 };
 
 const reducerDescription = {
   primaryActions: [actions.GET_PAYMENTS],
-  override: {}
+  override: {
+    [actions.SET_CURRENT_PAYMENT]: (state, action) =>
+      Immutable.merge(state, { currentPayment: action.payload })
+  }
 };
 
 export const reducer = createReducer(Immutable(defaultState), completeReducer(reducerDescription));

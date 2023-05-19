@@ -8,7 +8,8 @@ import { HOME, BILLS_HISTORY, PAYMENTS_HISTORY } from 'constants/routes';
 import Topbar from './components/Topbar';
 import Home from './screens/Home';
 import BillsHistory from './screens/BillsHistory';
-import Payments from './screens/PaymentsHistory';
+import PaymentsHistory from './screens/PaymentsHistory';
+import Payment from './screens/Payment';
 import styles from './styles.module.scss';
 
 const App = () => (
@@ -19,7 +20,8 @@ const App = () => (
         <Switch>
           <Route exact path={HOME} component={Home} />
           <Route exact path={BILLS_HISTORY} component={BillsHistory} />
-          <Route exact path={PAYMENTS_HISTORY} component={Payments} />
+          <Route exact path={PAYMENTS_HISTORY} component={PaymentsHistory} />
+          <Route path={`${PAYMENTS_HISTORY}/:paymentId`} component={Payment} />
           <Route render={() => <Redirect to={HOME} />} />
         </Switch>
       </ConnectedRouter>
