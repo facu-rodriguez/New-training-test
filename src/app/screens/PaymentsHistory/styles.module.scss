@@ -4,6 +4,7 @@
 
 $border: 1px solid #000;
 $hover-color: hsla(0, 0%, 0%, 0.247);
+$table-color: #FFF;
 
 .title {
   font-size: #{$large};
@@ -21,8 +22,8 @@ $hover-color: hsla(0, 0%, 0%, 0.247);
   display: flex;
   flex-direction: row;
   border: $border;
-  border-right: 0;
   border-bottom: 0;
+  background-color: $table-color;
 }
 
 .tableRow:last-child {
@@ -37,4 +38,8 @@ $hover-color: hsla(0, 0%, 0%, 0.247);
   border-right: $border;
   padding: 10px;
   width: 1000px;
+}
+
+.rowItem:last-child {
+  border-right: 0;
 }

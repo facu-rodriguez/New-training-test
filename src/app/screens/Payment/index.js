@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import PaymentActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
 
+import styles from './styles.module.scss';
+
 const Payment = ({ payments, currentPayment, loading, dispatch }) => {
   const { paymentId } = useParams();
 
@@ -20,23 +22,45 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
     if (!payment) dispatch(PaymentActions.setCurrentPayment(findPaymentById(paymentId)));
   };
 
+  const formatKey = str => str.replace(/_/g, ' ');
+
+  const formatValue = value => {
+    const isDate = Date.parse(value);
+    if (isDate) {
+      const newDate = new Date(isDate);
+      const day = newDate
+        .getDate()
+        .toString()
+        .padStart(2, '0');
+      const month = (newDate.getMonth() + 1).toString().padStart(2, '0');
+      const year = newDate.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+    if (typeof value === 'number') {
+      return value.toFixed(1).replace(/\./, ',');
+    }
+    return value;
+  };
+
   return (
     <>
       {setIfNull(currentPayment)}
       <UTLoading loading={loading}>
-        {console.log(currentPayment)}
         {currentPayment ? (
-          <>
-            {Object.keys(currentPayment).map(key => (
-              <UTLabel>
-                {key}: {currentPayment[key]}
-              </UTLabel>
-            ))}
-          </>
+          <div className={styles.container}>
+            {Object.keys(currentPayment).map(key =>
+              currentPayment[key] ? (
+                <UTLabel classes={{ root: styles.item }}>
+                  {formatKey(key)}: {formatValue(currentPayment[key])}
+                </UTLabel>
+              ) : (
+                <></>
+              )
+            )}
+          </div>
         ) : (
-          <p>Please reload</p>
+          <></>
         )}
-        <UTLabel>Buenos dias</UTLabel>
       </UTLoading>
     </>
   );
