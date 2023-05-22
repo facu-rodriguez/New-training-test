@@ -56,6 +56,31 @@ const Home = ({
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
               </div>
+              <div className={styles.leftSection}>
+                <div className={styles.facturaDigitalBefore}>
+                  <div className={styles.facturaDigitalAfter}>
+                    <UTLabel classes={{ root: styles.facturaDigitalTitle }}>
+                      {currentAccount.adherido_factura_digital
+                        ? 'Adherido a factura digital'
+                        : 'No adherido a factura digital'}
+                    </UTLabel>
+                    {currentAccount.adherido_factura_digital ? (
+                      <>
+                        <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                          Modificar
+                        </UTButton>
+                        <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                          Darse de Baja
+                        </UTButton>
+                      </>
+                    ) : (
+                      <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                        Alta
+                      </UTButton>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </Fragment>
         )}
