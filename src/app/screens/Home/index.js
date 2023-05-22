@@ -53,7 +53,7 @@ const Home = ({
                   {i18.t('Bills:goToHistory')}
                 </UTButton>
                 <UTButton
-                  onClick={() => dispatch(push(ACCOUNTS_LIST))}
+                  onClick={() => dispatch(push(ACCOUNTS_LIST, accounts))}
                   classNames={{ root: styles.accountsListButton }}
                   Icon={DescriptionIcon}
                 >
@@ -85,10 +85,10 @@ const mapStateToProps = store => ({
   accounts: store.accounts.accounts,
   currentAccount: store.accounts.currentAccount,
   accountsError: store.accounts.accountsError,
+  accountsLoading: store.accounts.accountsLoading,
   lastBill: store.bills.lastBill,
   lastBillError: store.bills.lastBillError,
-  lastBillLoading: store.bills.lastBillLoading,
-  accountsLoading: store.accounts.accountsLoading
+  lastBillLoading: store.bills.lastBillLoading
 });
 
 export default connect(mapStateToProps)(Home);

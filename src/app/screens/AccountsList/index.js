@@ -1,20 +1,21 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { UTLabel } from '@widergy/energy-ui';
-import { bool } from 'prop-types';
+import { isEmpty } from '@widergy/web-utils/lib/array';
+import { bool, string } from 'prop-types';
 import i18 from 'i18next';
 
 import UTLoading from 'app/components/UTLoading';
-import AccountsActions from 'redux/accounts/actions';
+import AccountActions from 'redux/accounts/actions';
 import { accountType } from 'types/accountTypes';
 
 import styles from './styles.module.scss';
 
 const capitalize = str => str[0].toUpperCase() + str.slice(1).toLowerCase();
 
-const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
+const Accounts = ({ accounts, accountsError, accountsLoading, loading, currentAccount, dispatch }) => {
   useEffect(() => {
-    dispatch(AccountsActions.getAccounts());
+    if (isEmpty(accounts) && !accountsError && !accountsLoading) dispatch(AccountActions.getAccounts());
   }, []);
 
   return (
@@ -26,7 +27,7 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
           accounts.map(account => (
             <button
               className={account.cuenta_id === currentAccount.cuenta_id ? styles.currentItem : styles.item}
-              onClick={() => dispatch(AccountsActions.setCurrentAccount(account))}
+              onClick={() => dispatch(AccountActions.setCurrentAccount(account))}
             >
               <div className={styles.cardTitle}>
                 <UTLabel classes={{ root: styles.titular }}>{account.titular}</UTLabel>
@@ -54,6 +55,8 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
 
 Accounts.propTypes = {
   accounts: accountType,
+  accountsError: string,
+  accountsLoading: bool,
   loading: bool,
   currentAccount: accountType
 };
@@ -61,7 +64,9 @@ Accounts.propTypes = {
 const mapStateToProps = store => ({
   accounts: store.accounts.accounts,
   loading: store.accounts.accountsLoading,
-  currentAccount: store.accounts.currentAccount
+  currentAccount: store.accounts.currentAccount,
+  accountsError: store.accounts.accountsError,
+  accountsLoading: store.accounts.accountsLoading
 });
 
 export default connect(mapStateToProps)(Accounts);

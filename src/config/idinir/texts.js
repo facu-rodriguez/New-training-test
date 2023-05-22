@@ -5,7 +5,8 @@ export default {
       goToList: 'Listado de Cuentas',
       accountsListTitle: 'Listado de Cuentas',
       relacion: 'Relacion: ',
-      status: 'Estado: '
+      status: 'Estado: ',
+      waitingAccountTitle: 'Seleccione una cuenta'
     },
     Bills: {
       billsListTitle: 'Factura actual',
