@@ -52,6 +52,7 @@ $item-height: 250px;
 
 .item:hover {
   background-color: #{$card-hover};
+  cursor: pointer;
 }
 
 .titular {
