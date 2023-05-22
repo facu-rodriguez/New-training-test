@@ -32,7 +32,7 @@ $item-height: 250px;
 }
 
 .item {
-  width: 40%;
+  width: 700px;
   border: 1px solid $secondary-color;
   border-radius: 16px;
   margin-bottom: 32px;
@@ -46,6 +46,7 @@ $item-height: 250px;
   background: linear-gradient(0deg, $gradient1-color 21%, $gradient2-color 81%, $gradient3-color 100%);
   background-size: 8px $item-height;
   background-repeat: no-repeat;
+  text-align: start;
 }
 
 .currentItem {

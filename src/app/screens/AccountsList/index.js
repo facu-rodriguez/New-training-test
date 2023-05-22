@@ -30,7 +30,7 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
               <div className={styles.cardTitle}>
                 <UTLabel classes={{ root: styles.titular }}>{account.titular}</UTLabel>
                 <UTLabel classes={{ root: styles.location }}>
-                  | {account.direccion}, {account.localidad}, {account.partido}
+                  {account.direccion}, {account.localidad}, {account.partido}
                 </UTLabel>
               </div>
               <div className={styles.cardInfo}>
