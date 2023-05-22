@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { UTLabel } from '@widergy/energy-ui';
 import { bool } from 'prop-types';
@@ -18,7 +18,7 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
   }, []);
 
   return (
-    <>
+    <Fragment>
       <UTLabel classes={{ root: styles.title }}>{i18.t('Account:accountsListTitle')}</UTLabel>
       <div className={styles.container}>
         <UTLoading loading={loading}>
@@ -48,7 +48,7 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
           ))}
         </UTLoading>
       </div>
-    </>
+    </Fragment>
   );
 };
 
