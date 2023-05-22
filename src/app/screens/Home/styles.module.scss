@@ -15,10 +15,10 @@ $margin-size: 40px;
 .content {
   display: flex;
   flex-wrap: wrap;
+  grid-row-gap: $margin-size;
   justify-content: space-between;
   margin-top: $margin-size;
   width: 100%;
-  grid-row-gap: $margin-size;
 }
 
 .rightSection {
