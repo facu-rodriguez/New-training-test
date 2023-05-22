@@ -52,11 +52,6 @@ const Home = ({
                 >
                   {i18.t('Bills:goToHistory')}
                 </UTButton>
-              </div>
-              <div className={styles.rightSection}>
-                <LastBill currentBill={lastBill} loading={lastBillloading} />
-              </div>
-              <div className={styles.leftSection}>
                 <UTButton
                   onClick={() => dispatch(push(ACCOUNTS_LIST))}
                   classNames={{ root: styles.accountsListButton }}
@@ -64,6 +59,9 @@ const Home = ({
                 >
                   {i18.t('Account:goToList')}
                 </UTButton>
+              </div>
+              <div className={styles.rightSection}>
+                <LastBill currentBill={lastBill} loading={lastBillloading} />
               </div>
             </div>
           </Fragment>

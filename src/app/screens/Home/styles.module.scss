@@ -28,13 +28,13 @@ $margin-size: 40px;
 
 .leftSection {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
   width: 48%;
 }
 
 %buttons {
   height: 100%;
+  width: 100%;
 }
 
 .billsListButton {
@@ -43,5 +43,4 @@ $margin-size: 40px;
 
 .accountsListButton {
   @extend %buttons;
-  height: 200px;
 }
