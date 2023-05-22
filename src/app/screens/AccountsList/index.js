@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { UTLabel } from '@widergy/energy-ui';
 import { bool } from 'prop-types';
+import i18 from 'i18next';
 
 import UTLoading from 'app/components/UTLoading';
 import AccountsActions from 'redux/accounts/actions';
@@ -18,7 +19,7 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
 
   return (
     <>
-      <UTLabel classes={{ root: styles.title }}>Listado de cuentas</UTLabel>
+      <UTLabel classes={{ root: styles.title }}>{i18.t('Account:accountsListTitle')}</UTLabel>
       <div className={styles.container}>
         <UTLoading loading={loading}>
           {// eslint-disable-next-line camelcase
@@ -34,8 +35,14 @@ const Accounts = ({ accounts, loading, currentAccount, dispatch }) => {
                 </UTLabel>
               </div>
               <div className={styles.cardInfo}>
-                <UTLabel>Relacion: {capitalize(account.relacion)}</UTLabel>
-                <UTLabel>Estado: {account.descripcion_estado}</UTLabel>
+                <UTLabel>
+                  {i18.t('Account:relacion')}
+                  {capitalize(account.relacion)}
+                </UTLabel>
+                <UTLabel>
+                  {i18.t('Account:status')}
+                  {account.descripcion_estado}
+                </UTLabel>
               </div>
             </button>
           ))}
