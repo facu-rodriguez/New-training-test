@@ -15,7 +15,9 @@ $margin-size: 40px;
 .content {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: $margin-size;
+  row-gap: 20px; //sass-lint:disable-line no-misspelled-properties
   width: 100%;
 }
 
@@ -31,10 +33,21 @@ $margin-size: 40px;
   width: 45%;
 }
 
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .accountListButton {
+    width: 45%;
+  }
+}
+
 %buttons {
   height: 100%;
 }
 
 .billsListButton {
   @extend %buttons;
+  width: 100%;
 }

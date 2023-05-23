@@ -18,13 +18,11 @@ const AccountCard = ({ account, currentId, handleClick }) => (
       <div className={styles.flare} />
       <div className={styles.data_container}>
         <UTLabel className={styles.title}>{account.direccion}</UTLabel>
-        <div className={styles.owner}>{account.titular}</div>
-        <div className={styles.id_relation}>
-          {account.cuenta_id} - {account.relacion}
-        </div>
-        <div className={styles[`status-${account.descripcion_estado}`]}>
+        <UTLabel className={styles.owner}>{account.titular}</UTLabel>
+        <UTLabel className={styles.id_relation}>{`${account.cuenta_id} - ${account.relacion}`}</UTLabel>
+        <UTLabel className={styles[`status-${account.descripcion_estado}`]}>
           {i18next.t('AccountList:intro')} {i18next.t(`AccountList:${account.descripcion_estado}`)}
-        </div>
+        </UTLabel>
       </div>
     </UTCard>
   </button>

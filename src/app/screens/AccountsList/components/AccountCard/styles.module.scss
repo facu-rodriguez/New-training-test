@@ -4,15 +4,13 @@
 @import '_general.scss';
 @import '_colors.scss';
 
-$gray: #808080;
-
 button {
   background-color: unset;
   border: unset;
+  cursor: pointer;
   padding: 0;
   text-align: left;
   width: 100%;
-  cursor: pointer;
 
   .account_card {
     align-items: flex-start;

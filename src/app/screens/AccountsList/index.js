@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { UTLoading } from '@widergy/energy-ui';
 import { arrayOf, bool } from 'prop-types';
@@ -19,7 +19,7 @@ const AccountsList = ({ accounts, loading, currentAccount, dispatch }) => {
   };
 
   return (
-    <div>
+    <Fragment>
       <UTLoading loading={loading}>
         <div className={styles.list_container}>
           {accounts.map(account => (
@@ -32,7 +32,7 @@ const AccountsList = ({ accounts, loading, currentAccount, dispatch }) => {
           ))}
         </div>
       </UTLoading>
-    </div>
+    </Fragment>
   );
 };
 

@@ -14,7 +14,8 @@ export default {
       amount_to_pay: 'Monto a pagar'
     },
     Home: {
-      noAccounts: 'No hay cuentas'
+      noAccounts: 'No hay cuentas',
+      goToAccounts: 'Listado de cuentas'
     },
     AccountList: {
       intro: 'El servicio se encuentra',
