@@ -1,4 +1,4 @@
-import { shape, string, bool } from 'prop-types';
+import { shape, string, bool, array, number } from 'prop-types';
 
 export const accountType = shape({
   cuenta_id: string,
@@ -12,5 +12,6 @@ export const accountType = shape({
   partido: string,
   alias: string,
   relacion: string,
-  perfil: 1
+  perfil: number,
+  contact_emails: array
 });

@@ -1,4 +1,6 @@
 @import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
 @import '_colors.scss';
 
 $margin-size: 40px;
@@ -37,4 +39,48 @@ $margin-size: 40px;
 
 .billsListButton {
   @extend %buttons;
+}
+
+.modal {
+  &-title {
+    color: $primary-variant-3;
+    font-size: $large;
+    margin: 0 auto;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+  }
+
+  &-body {
+    margin: 16px 0;
+    width: fit-content;
+
+    .modal-content {
+      color: $white;
+      font-size: $medium;
+      width: fit-content;
+    }
+  }
+
+  &-emails {
+    font-size: $small;
+    margin: 8px 0;
+    padding-left: 8px;
+  }
+
+  &-input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid $input-primary;
+    color: $white;
+    width: 100%;
+
+    &::placeholder {
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline: unset;
+    }
+  }
 }

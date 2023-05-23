@@ -1,0 +1,141 @@
+@import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
+@import '_colors.scss';
+
+%buttons {
+  height: 100%;
+}
+
+.digitalBilling {
+  align-items: center;
+  box-shadow: 1px -2px 5px 3px $shadow-color !important;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 40px;
+  width: 100%;
+
+  .title {
+    font-size: $large;
+    font-weight: 600;
+  }
+
+  .subscriptionTag {
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    font-size: $small;
+    overflow: hidden;
+    padding: 4px 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: fit-content;
+
+    &-error {
+      @extend .subscriptionTag;
+      background-color: $primary-variant-3;
+      color: $error;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    &-success {
+      @extend .subscriptionTag;
+      background-color: $primary-text-button-hover;
+      color: $input-primary;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .icon {
+      height: 16px;
+      margin-right: 4px;
+      width: 16px;
+  
+      &-error {
+        @extend .icon;
+        color: $error;
+      }
+  
+      &-success {
+        @extend .icon;
+        color: $input-primary;
+      }
+    }
+  }
+
+  .emailList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    > li {
+      color: $gray;
+      font-size: $medium;
+      font-weight: 300;
+      overflow: hidden;
+      padding-left: 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      ::marker {
+        margin: 0 8px;
+      }
+    }
+  }
+
+  .buttonsBox {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 8px;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 16px;
+    width: 100%;
+
+    .digitalBillingButtons {
+      @extend %buttons;
+      font-size: $medium;
+      max-width: 160px;
+      min-width: 90px;
+      width: 50%;
+
+      &-modify {
+        @extend .digitalBillingButtons;
+        background-color: $loading-base;
+        color: $account-status-action-card;
+      }
+      
+      &-unsubscribe {
+        @extend .digitalBillingButtons;
+        background-color: $error;
+        color: $white;
+      }
+      
+      &-subscribe {
+        @extend .digitalBillingButtons;
+        background-color: $primary-text-button-hover;
+        color: $input-primary;
+      }
+    }
+  }
+}
+
+@media #{$desktop-tablet} {
+  .digitalBilling {
+    .buttonsBox {
+      justify-content: flex-end;
+    }
+  }
+}
