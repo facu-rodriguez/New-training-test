@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { UTButton, UTLabel, UTLoading } from '@widergy/energy-ui';
@@ -16,7 +16,10 @@ import { billType } from 'types/billsTypes';
 import { accountType } from 'types/accountTypes';
 
 import LastBill from './components/LastBill';
+import UpdateModal from './components/UpdateModal';
 import styles from './styles.module.scss';
+import CreateModal from './components/CreateModal';
+import DeleteModal from './components/DeleteModal';
 
 const Home = ({
   accounts,
@@ -32,6 +35,36 @@ const Home = ({
     if (isEmpty(accounts) && !accountsError && !accountsLoading) dispatch(AccountActions.getAccounts());
     if (objectIsEmpty(lastBill) && !lastBillError && !lastBillloading) dispatch(BillsActions.getLastBill());
   }, []);
+
+  const updateRef = useRef(null);
+  const deleteRef = useRef(null);
+  const createRef = useRef(null);
+
+  const openModal = modalType => {
+    document.getElementById('modal').style.display = 'block';
+    const modal = document.getElementById(`modal-content`);
+
+    modalType.current.style.display = 'block';
+
+    modal.style.display = 'block';
+    setTimeout(() => {
+      modal.style.opacity = 1;
+      modal.style.marginTop = `${10}%`;
+    }, 10);
+  };
+
+  window.onclick = event => {
+    const modalBg = document.getElementById('modal');
+    if (modalBg && event.target === modalBg) {
+      updateRef.current.style.display = 'none';
+      deleteRef.current.style.display = 'none';
+      createRef.current.style.display = 'none';
+      const modal = document.getElementById('modal-content');
+      modal.style.opacity = 0;
+      modal.style.marginTop = `${13}%`;
+      modalBg.style.display = 'none';
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -66,20 +99,39 @@ const Home = ({
                     </UTLabel>
                     {currentAccount.adherido_factura_digital ? (
                       <>
-                        <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                        <UTButton
+                          variant="outlined"
+                          classNames={{ root: styles.facturaDigitalButton }}
+                          onClick={() => openModal(updateRef)}
+                        >
                           Modificar
                         </UTButton>
-                        <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                        <UTButton
+                          variant="outlined"
+                          classNames={{ root: styles.facturaDigitalButton }}
+                          onClick={() => openModal(deleteRef)}
+                        >
                           Darse de Baja
                         </UTButton>
                       </>
                     ) : (
-                      <UTButton variant="outlined" classNames={{ root: styles.facturaDigitalButton }}>
+                      <UTButton
+                        variant="outlined"
+                        classNames={{ root: styles.facturaDigitalButton }}
+                        onClick={() => openModal(createRef)}
+                      >
                         Alta
                       </UTButton>
                     )}
                   </div>
                 </div>
+              </div>
+            </div>
+            <div id="modal" className={styles.modal}>
+              <div id="modal-content" className={styles.modalContent}>
+                <UpdateModal ref={updateRef} />
+                <CreateModal ref={createRef} />
+                <DeleteModal ref={deleteRef} />
               </div>
             </div>
           </Fragment>

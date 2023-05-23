@@ -42,7 +42,12 @@ $margin-size: 40px;
 }
 
 .facturaDigitalBefore {
-  background: linear-gradient(90deg, #{$primary-variant-1} 20%, #{$primary-variant-2} 80%, #{$primary-variant-3} 100%);
+  background: linear-gradient(
+    90deg,
+    #{$primary-variant-1} 20%,
+    #{$primary-variant-2} 80%,
+    #{$primary-variant-3} 100%
+  );
 }
 
 .facturaDigitalAfter {
@@ -70,4 +75,31 @@ $margin-size: 40px;
   color: #{$white} !important;
   margin-right: 20px;
   min-width: 100px !important;
+}
+
+.modal {
+  background-color: #{$gray};
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.modalContent {
+  background-color: #{$white};
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 13%;
+  opacity: 0;
+  padding: 40px;
+  transition: opacity 0.5s, margin-top 0.5s;
+  width: 70%;
+}
+
+.modalComponent {
+  display: none;
 }
