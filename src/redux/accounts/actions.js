@@ -2,7 +2,10 @@ import { createTypes, completeTypes } from 'redux-recompose';
 
 import AccountService from 'services/AccountService';
 
-export const actions = createTypes(completeTypes(['GET_ACCOUNTS'], ['SET_CURRENT_ACCOUNT']), '@@ACCOUNTS');
+export const actions = createTypes(
+  completeTypes(['GET_ACCOUNTS'], ['SET_CURRENT_ACCOUNT', 'SET_CONTACT_EMAILS']),
+  '@@ACCOUNTS'
+);
 
 const privateActionCreators = {
   getAccountsSuccess: payload => ({ type: actions.GET_ACCOUNTS_SUCCESS, payload, target: 'accounts' }),
@@ -11,6 +14,7 @@ const privateActionCreators = {
 
 export const actionCreators = {
   setCurrentAccount: account => dispatch => dispatch({ type: actions.SET_CURRENT_ACCOUNT, payload: account }),
+  setContactEmails: emails => dispatch => dispatch({ type: actions.SET_CONTACT_EMAILS, payload: emails }),
   getAccounts: () => async dispatch => {
     dispatch({ type: actions.GET_ACCOUNTS, target: 'accounts' });
     const response = await AccountService.getAccounts();

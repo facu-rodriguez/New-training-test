@@ -42,10 +42,10 @@ const Home = ({
 
   const openModal = modalType => {
     document.getElementById('modal').style.display = 'block';
-    const modal = document.getElementById(`modal-content`);
 
     modalType.current.style.display = 'block';
 
+    const modal = document.getElementById(`modal-content`);
     modal.style.display = 'block';
     setTimeout(() => {
       modal.style.opacity = 1;
@@ -53,17 +53,26 @@ const Home = ({
     }, 10);
   };
 
+  const closeModal = modalBg => {
+    updateRef.current.style.display = 'none';
+    deleteRef.current.style.display = 'none';
+    createRef.current.style.display = 'none';
+    const modal = document.getElementById('modal-content');
+    modal.style.opacity = 0;
+    modal.style.marginTop = `${13}%`;
+    modalBg.style.display = 'none';
+  };
+
   window.onclick = event => {
     const modalBg = document.getElementById('modal');
     if (modalBg && event.target === modalBg) {
-      updateRef.current.style.display = 'none';
-      deleteRef.current.style.display = 'none';
-      createRef.current.style.display = 'none';
-      const modal = document.getElementById('modal-content');
-      modal.style.opacity = 0;
-      modal.style.marginTop = `${13}%`;
-      modalBg.style.display = 'none';
+      closeModal(modalBg);
     }
+  };
+
+  const handleNewEmail = async email => {
+    await dispatch(AccountActions.setContactEmails(email));
+    closeModal(document.getElementById('modal'));
   };
 
   return (
@@ -129,7 +138,12 @@ const Home = ({
             </div>
             <div id="modal" className={styles.modal}>
               <div id="modal-content" className={styles.modalContent}>
-                <UpdateModal ref={updateRef} />
+                <UpdateModal
+                  ref={updateRef}
+                  account={currentAccount}
+                  onNewEmail={handleNewEmail}
+                  onCancel={() => closeModal(document.getElementById('modal'))}
+                />
                 <CreateModal ref={createRef} />
                 <DeleteModal ref={deleteRef} />
               </div>
