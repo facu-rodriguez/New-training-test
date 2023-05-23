@@ -1,8 +1,8 @@
 @import '_colors.scss';
 
-.DigitalBillsBtnContainer{
+.DigitalBillsBtnContainer {
+  column-gap: 20px;
   display: flex;
   flex-direction: row;
-  gap: 20px;
   margin-top: 20px;
 }
