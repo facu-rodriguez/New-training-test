@@ -38,7 +38,7 @@ const Accounts = ({ accounts, accountsError, accountsLoading, currentAccount, di
           {i18.t('Accounts:goBack')}
         </UTButton>
 
-        <h1 className={styles.accountsTitle}>Listado de todas las cuentas</h1>
+        <h1 className={styles.accountsTitle}>{i18.t('Accounts:title')}</h1>
         <div className={styles.accountsContainer}>
           <AccountsList accounts={accounts} currentAccount={currentAccount} />
         </div>

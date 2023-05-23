@@ -21,7 +21,8 @@ export default {
       goBack: 'Volver',
       retry: 'Reintentar',
       noRelation: 'relación indefinida',
-      accountNumber: 'Nº {{id}} - '
+      accountNumber: 'Nº {{id}} - ',
+      title: 'Listado de todas las cuentas'
     }
   }
 };
