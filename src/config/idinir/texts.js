@@ -23,8 +23,13 @@ export default {
       notSubscribed: {
         title: '❌ NO adherido a factura digital'
       },
+      cancel: 'Cancelar',
+      accept: 'Aceptar',
+      close: 'Cerrar',
+      emailIsValid: 'Ingrese un correo electrónico válido',
       actions: {
         modificar: {
+          shortTitle: 'Modificar',
           title: 'Modificar adhesión a factura digital',
           body: {
             text: 'Su email actual es ',
@@ -32,12 +37,14 @@ export default {
           }
         },
         baja: {
+          shortTitle: 'Darse de baja',
           title: 'Baja de factura digital',
           body: {
             text: 'Usted está a punto de deshaderirse de factura digital'
           }
         },
         alta: {
+          shortTitle: 'Alta',
           title: 'Adhesión a factura digital',
           body: {
             inputText: 'Ingrese el email en el cual quiere recibir su factura: '

@@ -23,15 +23,15 @@ const DigitalBill = ({ billType, email }) => {
         {billType ? (
           <Fragment>
             <UTButton colorTheme="success" onClick={() => handleModal('modificar')}>
-              Modificar
+              {i18.t(`DigitalBill:actions:modificar:shortTitle`)}
             </UTButton>
             <UTButton colorTheme="error" onClick={() => handleModal('baja')}>
-              Darse de baja
+              {i18.t(`DigitalBill:actions:baja:shortTitle`)}
             </UTButton>
           </Fragment>
         ) : (
           <UTButton colorTheme="success" onClick={() => handleModal('alta')}>
-            Alta
+            {i18.t(`DigitalBill:actions:alta:shortTitle`)}
           </UTButton>
         )}
       </div>
