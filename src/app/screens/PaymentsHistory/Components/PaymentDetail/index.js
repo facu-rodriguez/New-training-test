@@ -6,7 +6,7 @@ import { UTButton } from '@widergy/energy-ui';
 import i18 from 'i18next';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
-import { LIST_OF_PAYMENTS } from 'constants/routes';
+import { PAYMENTS_HISTORY } from 'constants/routes';
 import { paymentType } from 'types/paymentsTypes';
 
 import styles from './styles.module.scss';
@@ -14,14 +14,14 @@ import styles from './styles.module.scss';
 const PaymentDetail = ({ currentPayment, dispatch }) => {
   useEffect(() => {
     if (isEmpty(currentPayment)) {
-      dispatch(push(`${LIST_OF_PAYMENTS}`));
+      dispatch(push(`${PAYMENTS_HISTORY}`));
     }
   }, []);
 
   return (
     <>
       <UTButton
-        onClick={() => dispatch(push(LIST_OF_PAYMENTS))}
+        onClick={() => dispatch(push(PAYMENTS_HISTORY))}
         classNames={{ root: styles.paymentsButton }}
         Icon={ArrowBackIosIcon}
       >
@@ -36,12 +36,12 @@ const PaymentDetail = ({ currentPayment, dispatch }) => {
         <div className={styles.detailPaymentRow}>
           <div className={styles.detailPaymentColumnLeft}>
             <span>
-              {i18.t('Payments:keys:client_number')}: {currentPayment?.client_number}
+              {i18.t('Payments:PaymentDetail:client_number')}: {currentPayment?.client_number}
             </span>
           </div>
           <div className={styles.detailPaymentColumnRight}>
             <span>
-              {i18.t('Payments:keys:datetime')}: {currentPayment?.datetime}
+              {i18.t('Payments:PaymentDetail:datetime')}: {currentPayment?.datetime}
             </span>
           </div>
         </div>
@@ -49,12 +49,12 @@ const PaymentDetail = ({ currentPayment, dispatch }) => {
         <div className={styles.detailPaymentRow}>
           <div className={styles.detailPaymentColumnLeft}>
             <span>
-              {i18.t('Payments:keys:status_label')}: {currentPayment?.status_label}
+              {i18.t('Payments:PaymentDetail:status_label')}: {currentPayment?.status_label}
             </span>
           </div>
           <div className={styles.detailPaymentColumnRight}>
             <span>
-              {i18.t('Payments:keys:payment_method')}: {currentPayment?.payment_method}
+              {i18.t('Payments:PaymentDetail:payment_method')}: {currentPayment?.payment_method}
             </span>
           </div>
         </div>

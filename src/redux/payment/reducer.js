@@ -4,8 +4,8 @@ import { completeReducer, createReducer } from 'redux-recompose';
 import { actions } from './actions';
 
 export const defaultState = {
-  paymentHistory: [],
-  paymentHistoryLoading: false,
+  payments: [],
+  paymentsLoading: false,
   currentPayment: null
 };
 

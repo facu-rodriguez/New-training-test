@@ -18,10 +18,10 @@ export default {
     },
     Payments: {
       goBack: 'Volver',
-      goToPayments: 'Ver facturas pagadas',
-      noPayments: 'No hay facturas pagadas',
-      tableTitle: 'Facturas pagadas',
-      keys: {
+      goToPayments: 'Ver histórico de pagos',
+      noPayments: 'No hay pagos',
+      tableTitle: 'Histórico de pagos',
+      PaymentDetail: {
         datetime: 'Fecha de pago',
         client_number: 'Nº de cliente',
         status_label: 'Estado',

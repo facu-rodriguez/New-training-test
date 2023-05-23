@@ -9,7 +9,7 @@ import i18 from 'i18next';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PaymentIcon from '@material-ui/icons/Payment';
 
-import { BILLS_HISTORY, LIST_OF_PAYMENTS } from 'constants/routes';
+import { BILLS_HISTORY, PAYMENTS_HISTORY } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
@@ -59,7 +59,7 @@ const Home = ({
               </div>
             </div>
             <UTButton
-              onClick={() => dispatch(push(LIST_OF_PAYMENTS))}
+              onClick={() => dispatch(push(PAYMENTS_HISTORY))}
               classNames={{ root: styles.paymentButton }}
               Icon={PaymentIcon}
             >

@@ -6,6 +6,6 @@ export const paymentType = shape({
   status: string,
   payment_code: string,
   payment_method: string,
-  amount: string, // number,
+  amount: string,
   status_label: string
 });
