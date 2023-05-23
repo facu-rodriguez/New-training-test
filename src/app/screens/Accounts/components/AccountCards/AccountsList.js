@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import { array } from 'prop-types';
 import { UTLabel } from '@widergy/energy-ui';
 import { connect } from 'react-redux';
+import i18 from 'i18next';
 
 import { accountType } from 'types/accountTypes';
 import AccountActions from 'redux/accounts/actions';
@@ -15,13 +16,13 @@ const situation = {
   BAJA: { text: 'El servicio se encuentra de baja', style: styles.tagUnsubscribe }
 };
 
-const AccountCards = ({ accounts, currentAccount, dispatch }) => {
+const AccountsList = ({ accounts, currentAccount, dispatch }) => {
   const handleSelectAccount = account => {
     dispatch(AccountActions.setCurrentAccount(account));
   };
 
   return (
-    <>
+    <Fragment>
       {accounts.map(row => (
         <div
           key={row.cuenta_id}
@@ -46,8 +47,8 @@ const AccountCards = ({ accounts, currentAccount, dispatch }) => {
             </div>
             <div className={styles.header}>
               <UTLabel className={styles.accountId} shade="01" variant="subtitle2" weight="light">
-                Nº {row.cuenta_id} -{' '}
-                {row.relacion.toUpperCase() !== 'NOSE' ? row.relacion : 'relación indefinida'}
+                {i18.t('Accounts:accountNumber', { id: row.cuenta_id })}
+                {row.relacion.toUpperCase() !== 'NOSE' ? row.relacion : i18.t('Accounts:noRelation')}
               </UTLabel>
             </div>
             <div className={styles.header}>
@@ -63,18 +64,14 @@ const AccountCards = ({ accounts, currentAccount, dispatch }) => {
           </div>
         </div>
       ))}
-    </>
+    </Fragment>
   );
 };
 
-AccountCards.propTypes = {
+AccountsList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   accounts: array,
   currentAccount: accountType
 };
 
-const mapStateToProps = store => ({
-  accounts: store.accounts.accounts
-});
-
-export default connect(mapStateToProps)(memo(AccountCards));
+export default connect()(memo(AccountsList));

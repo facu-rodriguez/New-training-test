@@ -9,7 +9,7 @@ import i18 from 'i18next';
 import DescriptionIcon from '@material-ui/icons/Description';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
-import { BILLS_HISTORY, LIST_OF_ACCOUNTS } from 'constants/routes';
+import { BILLS_HISTORY, ACCOUNTS_LIST } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
@@ -45,7 +45,7 @@ const Home = ({
           <Fragment>
             <CurrentAccount currentAccount={currentAccount} />
             <UTButton
-              onClick={() => dispatch(push(LIST_OF_ACCOUNTS))}
+              onClick={() => dispatch(push(ACCOUNTS_LIST))}
               classNames={{ root: styles.accountsButton }}
               Icon={AssignmentIcon}
             >

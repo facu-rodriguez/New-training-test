@@ -14,11 +14,11 @@ $tag-width: 50px;
   flex-direction: row;
   height: calc(100% - 6px);
   justify-content: space-between;
+  margin: 16px 0;
   overflow: hidden;
   position: relative;
   transition: 0.5s;
   width: 100%;
-  margin: 16px 0;
 }
 
 .card:hover {
@@ -30,10 +30,10 @@ $tag-width: 50px;
 }
 
 .content {
-  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 16px;
   width: 100%;
 }
 
@@ -59,10 +59,10 @@ $tag-width: 50px;
   margin-top: 15px;
 
   span {
-    padding: 3px 15px;
     border-radius: 10px;
     font-size: 0.8rem;
     font-weight: 500;
+    padding: 3px 15px;
   }
 }
 
@@ -83,7 +83,7 @@ $tag-width: 50px;
 
 @media #{$desktop-tablet} {
   .card {
-    width: calc(50% - 20px);
     margin: 10px;
+    width: calc(50% - 20px);
   }
 }

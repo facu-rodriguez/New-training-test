@@ -18,7 +18,10 @@ export default {
     },
     Accounts: {
       goToAccounts: 'VER LISTADO DE TODAS LAS CUENTAS',
-      goBack: 'Volver'
+      goBack: 'Volver',
+      retry: 'Reintentar',
+      noRelation: 'relación indefinida',
+      accountNumber: 'Nº {{id}} - '
     }
   }
 };

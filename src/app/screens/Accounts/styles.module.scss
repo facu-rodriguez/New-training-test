@@ -12,30 +12,30 @@ $margin-size: 40px;
 .accountsButton {
   align-items: center;
   background-color: $primary-variant-3 !important;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   padding: 5px 20px;
-  cursor: pointer;
 }
 
 .accountsContainer {
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .accountsTitle {
-  margin-top: 40px;
   color: $black;
-  font-size: 1.5rem;
   font-family: Poppins;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 100%;
-  text-transform: uppercase;
   margin-bottom: 20px;
+  margin-top: 40px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 @media #{ $desktop-tablet } {
@@ -44,11 +44,11 @@ $margin-size: 40px;
   }
 
   .accountsContainer {
-    width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
   }
 }
