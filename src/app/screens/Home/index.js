@@ -44,13 +44,6 @@ const Home = ({
         ) : (
           <Fragment>
             <CurrentAccount currentAccount={currentAccount} />
-            <UTButton
-              onClick={() => dispatch(push(ACCOUNTS_LIST))}
-              classNames={{ root: styles.accountsButton }}
-              Icon={AssignmentIcon}
-            >
-              {i18.t('Accounts:goToAccounts')}
-            </UTButton>
             <div className={styles.content}>
               <div className={styles.leftSection}>
                 <UTButton
@@ -63,6 +56,15 @@ const Home = ({
               </div>
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
+              </div>
+              <div className={styles.leftSection}>
+                <UTButton
+                  onClick={() => dispatch(push(ACCOUNTS_LIST))}
+                  classNames={{ root: styles.accountsButton }}
+                  Icon={AssignmentIcon}
+                >
+                  {i18.t('Accounts:goToAccounts')}
+                </UTButton>
               </div>
             </div>
           </Fragment>

@@ -19,7 +19,7 @@ const Accounts = ({ accounts, accountsError, accountsLoading, currentAccount, di
     {accountsError ? (
       <UTLabel>{accountsError}</UTLabel>
     ) : isEmpty(accounts) && !accountsError && !accountsLoading ? (
-      <div className={styles.accountsContainer}>
+      <div className={styles.accountsContainerError}>
         <UTLabel>{i18.t('Home:noAccounts')}</UTLabel>
         <UTButton
           onClick={() => dispatch(AccountActions.getAccounts())}

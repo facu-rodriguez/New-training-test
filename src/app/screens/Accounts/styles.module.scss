@@ -26,6 +26,14 @@ $margin-size: 40px;
   width: 100%;
 }
 
+.accountsContainerError {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .accountsTitle {
   color: $black !important;
   font-family: Poppins !important;
