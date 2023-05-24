@@ -13,25 +13,11 @@ import UTLoading from 'app/components/UTLoading';
 import PaymentActions from 'redux/payment/actions';
 import { paymentType } from 'types/paymentsTypes';
 
-import { getDate } from './utils/dateUtils';
-import { formatNumber } from './utils/numberUtils';
+import { formatPaymentsUtils } from './utils/formatPaymentsUtils';
 import styles from './styles.module.scss';
 
-const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dispatch }) => {
-  const { columns } = appConfig;
-
-  const formattedPayments = payments.map(bill => ({
-    ...bill,
-    datetime: getDate(bill.datetime),
-    amount: `$ ${formatNumber(bill.amount)}`
-  }));
-
-  const sortedPayments = [...formattedPayments]
-    .sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
-    .map(bill => ({
-      ...bill,
-      datetime: getDate(bill.datetime, 'sort')
-    }));
+const PaymentsHistory = ({ payments, loading, paymentsError, dispatch }) => {
+  const { PaymentDetailColumns } = appConfig;
 
   const handleClick = paymentDetail => {
     dispatch(PaymentActions.setCurrentPayment(paymentDetail));
@@ -42,11 +28,7 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
     if (isEmpty(payments) && !paymentsError && !loading) {
       dispatch(PaymentActions.getPayments());
     }
-
-    if (currentPayment) {
-      dispatch(PaymentActions.cleanCurrentPayment());
-    }
-  }, [currentPayment, dispatch, loading, payments, paymentsError]);
+  }, [dispatch, loading, payments, paymentsError]);
 
   return (
     <Fragment>
@@ -65,7 +47,6 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
           <UTLabel>{i18.t('Payments:noPayments')}</UTLabel>
         ) : (
           <div className={styles.container}>
-            {' '}
             <UTTable
               classNames={{
                 table: styles.tableContainer,
@@ -73,8 +54,8 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
                 rowCell: styles.rowElement,
                 responsiveRow: styles.rowHover
               }}
-              columns={columns}
-              data={sortedPayments}
+              columns={PaymentDetailColumns}
+              data={payments}
               onRowClick={(_, row) => handleClick(row)}
               disableAutoOrder
               tableTitle={`${i18.t('Payments:tableTitle')} (click para ver detalle)`}
@@ -90,15 +71,13 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
 PaymentsHistory.propTypes = {
   payments: arrayOf(paymentType),
   loading: bool,
-  paymentsError: bool,
-  currentPayment: paymentType
+  paymentsError: bool
 };
 
 const mapStateToProps = store => ({
-  payments: store.payments.payments,
+  payments: formatPaymentsUtils(store.payments.payments),
   loading: store.payments.paymentsLoading,
-  paymentsError: store.paymentsError,
-  currentPayment: store.payments.currentPayment
+  paymentsError: store.paymentsError
 });
 
 export default connect(mapStateToProps)(PaymentsHistory);

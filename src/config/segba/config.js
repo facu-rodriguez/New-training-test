@@ -2,7 +2,7 @@ import i18 from 'i18next';
 
 import Colors from './scss/_colors.scss';
 
-const columns = [
+const PaymentDetailColumns = [
   {
     name: i18.t('Payments:PaymentDetail:datetime'),
     key: 'datetime',
@@ -35,5 +35,5 @@ export default {
   billsHistory: {
     enabled: false
   },
-  columns
+  PaymentDetailColumns
 };

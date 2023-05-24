@@ -6,6 +6,7 @@ import { UTButton } from '@widergy/energy-ui';
 import i18 from 'i18next';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import PaymentActions from 'redux/payment/actions';
 import { PAYMENTS_HISTORY } from 'constants/routes';
 import { paymentType } from 'types/paymentsTypes';
 
@@ -16,6 +17,9 @@ const PaymentDetail = ({ currentPayment, dispatch }) => {
     if (isEmpty(currentPayment)) {
       dispatch(push(`${PAYMENTS_HISTORY}`));
     }
+    return () => {
+      dispatch(PaymentActions.cleanCurrentPayment());
+    };
   }, [dispatch, currentPayment]);
 
   return (
