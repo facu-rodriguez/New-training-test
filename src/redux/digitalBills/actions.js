@@ -2,16 +2,41 @@ import { createTypes, completeTypes } from 'redux-recompose';
 
 import digitalBillsService from 'services/digitalBillsService';
 
-export const actions = createTypes(completeTypes(['DIGITAL_BILLS']), '@@DIGITAL_BILLS');
+import { defaultState } from './reducer';
+
+export const actions = createTypes(
+  completeTypes(['PUT_DIGITAL_BILLS', 'DELETE_DIGITAL_BILLS', 'POST_DIGITAL_BILLS']),
+  '@@DIGITAL_BILLS'
+);
 
 const privateActionCreators = {
-  digitalBillsSuccess: payload => ({
-    type: actions.DIGITAL_BILLS_SUCCESS,
+  putDigitalBillsSuccess: payload => ({
+    type: actions.PUT_DIGITAL_BILLS_SUCCESS,
     payload,
     target: 'digitalBills'
   }),
-  digitalBillsFailure: error => ({
-    type: actions.DIGITAL_BILLS_FAILURE,
+  putDigitalBillsFailure: error => ({
+    type: actions.PUT_DIGITAL_BILLS_FAILURE,
+    error,
+    target: 'digitalBills'
+  }),
+  deleteDigitalBillsSuccess: payload => ({
+    type: actions.DELETE_DIGITAL_BILLS_SUCCESS,
+    payload,
+    target: 'digitalBills'
+  }),
+  deleteDigitalBillsFailure: error => ({
+    type: actions.DELETE_DIGITAL_BILLS_FAILURE,
+    error,
+    target: 'digitalBills'
+  }),
+  postDigitalBillsSuccess: payload => ({
+    type: actions.POST_DIGITAL_BILLS_SUCCESS,
+    payload,
+    target: 'digitalBills'
+  }),
+  postDigitalBillsFailure: error => ({
+    type: actions.POST_DIGITAL_BILLS_FAILURE,
     error,
     target: 'digitalBills'
   })
@@ -19,31 +44,34 @@ const privateActionCreators = {
 
 export const actionCreators = {
   putDigitalBills: newData => async dispatch => {
-    dispatch({ type: actions.DIGITAL_BILLS, target: 'digitalBills' });
+    dispatch({ type: actions.PUT_DIGITAL_BILLS, target: 'digitalBills' });
     const response = await digitalBillsService.putDigitalBills(newData);
     if (response.ok) {
-      dispatch(privateActionCreators.digitalBillsSuccess(response.data));
+      dispatch(privateActionCreators.putDigitalBillsSuccess(response.data));
     } else {
-      dispatch(privateActionCreators.digitalBillsFailure(response.data.error));
+      dispatch(privateActionCreators.putDigitalBillsFailure(response.data.error));
     }
   },
   deleteDigitalBills: () => async dispatch => {
-    dispatch({ type: actions.DIGITAL_BILLS, target: 'digitalBills' });
+    dispatch({ type: actions.DELETE_DIGITAL_BILLS, target: 'digitalBills' });
     const response = await digitalBillsService.deleteDigitalBills();
     if (response.ok) {
-      dispatch(privateActionCreators.digitalBillsSuccess(response.data));
+      dispatch(privateActionCreators.deleteDigitalBillsSuccess(response.data));
     } else {
-      dispatch(privateActionCreators.digitalBillsFailure(response.data.error));
+      dispatch(privateActionCreators.deleteDigitalBillsFailure(response.data.error));
     }
   },
   postDigitalBills: data => async dispatch => {
-    dispatch({ type: actions.DIGITAL_BILLS, target: 'digitalBills' });
+    dispatch({ type: actions.POST_DIGITAL_BILLS, target: 'digitalBills' });
     const response = await digitalBillsService.postDigitalBills(data);
     if (response.ok) {
-      dispatch(privateActionCreators.digitalBillsSuccess(response.data));
+      dispatch(privateActionCreators.postDigitalBillsSuccess(response.data));
     } else {
-      dispatch(privateActionCreators.digitalBillsFailure(response.data.error));
+      dispatch(privateActionCreators.postDigitalBillsFailure(response.data.error));
     }
+  },
+  clearDigitalBills: type => dispatch => {
+    dispatch(privateActionCreators[type](defaultState.digitalBills));
   }
 };
 

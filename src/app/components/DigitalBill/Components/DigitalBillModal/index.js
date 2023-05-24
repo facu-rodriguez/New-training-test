@@ -38,6 +38,26 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
     }
   };
 
+  const handleFinalClose = () => {
+    onHide(false);
+    switch (type) {
+      case 'modificar':
+        dispatch(DigitalBillsActions.clearDigitalBills('putDigitalBillsSuccess'));
+        break;
+
+      case 'baja':
+        dispatch(DigitalBillsActions.clearDigitalBills('deleteDigitalBillsSuccess'));
+        break;
+
+      case 'alta':
+        dispatch(DigitalBillsActions.clearDigitalBills('postDigitalBillsSuccess'));
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return show ? (
     <section className={styles.DigitalBillModalContainer}>
       {digitalBills.digitalBills.mensaje === '' &&
@@ -88,7 +108,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
         </div>
       ) : (
         <div className={styles.DigitalBillModalContainerData}>
-          <UTButton colorTheme="primary" onClick={() => onHide(false)}>
+          <UTButton colorTheme="primary" onClick={handleFinalClose}>
             {i18.t(`DigitalBill:close`)}
           </UTButton>
           <UTLoading loading={loading}>
