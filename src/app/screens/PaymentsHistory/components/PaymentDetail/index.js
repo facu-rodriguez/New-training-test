@@ -16,7 +16,7 @@ const PaymentDetail = ({ currentPayment, dispatch }) => {
     if (isEmpty(currentPayment)) {
       dispatch(push(`${PAYMENTS_HISTORY}`));
     }
-  }, []);
+  }, [dispatch, currentPayment]);
 
   return (
     <>

@@ -12,19 +12,17 @@ import Home from './screens/Home';
 import BillsHistory from './screens/BillsHistory';
 import styles from './styles.module.scss';
 import PaymentsHistory from './screens/PaymentsHistory';
-import PaymentDetail from './screens/PaymentsHistory/Components/PaymentDetail';
+import PaymentDetail from './screens/PaymentsHistory/components/PaymentDetail';
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const onChangeRouteSetCurrentPayment = () => {
-    if (!history.location.pathname.includes(PAYMENTS_HISTORY)) {
-      dispatch(PaymentActions.setCurrentPayment(null));
-    }
-  };
-
   useEffect(() => {
-    onChangeRouteSetCurrentPayment();
+    const onChangeRouteSetCurrentPayment = () => {
+      if (!history.location.pathname.includes(PAYMENTS_HISTORY)) {
+        dispatch(PaymentActions.cleanCurrentPayment());
+      }
+    };
     history.listen(onChangeRouteSetCurrentPayment);
   }, [dispatch]);
 

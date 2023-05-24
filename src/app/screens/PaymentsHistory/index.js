@@ -7,21 +7,32 @@ import { bool, arrayOf } from 'prop-types';
 import { push } from 'connected-react-router';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import appConfig from 'config/appConfig';
 import { HOME, PAYMENTS_HISTORY } from 'constants/routes';
 import UTLoading from 'app/components/UTLoading';
 import PaymentActions from 'redux/payment/actions';
 import { paymentType } from 'types/paymentsTypes';
-import { columnsIdinir } from 'config/idinir/config';
-import { columnsSegba } from 'config/segba/config';
 
+import { getDate } from './utils/dateUtils';
+import { formatNumber } from './utils/numberUtils';
 import styles from './styles.module.scss';
 
-const columns = {
-  idinir: columnsIdinir,
-  segba: columnsSegba
-};
-
 const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dispatch }) => {
+  const { columns } = appConfig;
+
+  const formattedPayments = payments.map(bill => ({
+    ...bill,
+    datetime: getDate(bill.datetime),
+    amount: `$ ${formatNumber(bill.amount)}`
+  }));
+
+  const sortedPayments = [...formattedPayments]
+    .sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
+    .map(bill => ({
+      ...bill,
+      datetime: getDate(bill.datetime, 'sort')
+    }));
+
   const handleClick = paymentDetail => {
     dispatch(PaymentActions.setCurrentPayment(paymentDetail));
     dispatch(push(`${PAYMENTS_HISTORY}/${paymentDetail.datetime}`));
@@ -33,9 +44,9 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
     }
 
     if (currentPayment) {
-      dispatch(PaymentActions.setCurrentPayment(null));
+      dispatch(PaymentActions.cleanCurrentPayment());
     }
-  }, []);
+  }, [currentPayment, dispatch, loading, payments, paymentsError]);
 
   return (
     <Fragment>
@@ -62,8 +73,8 @@ const PaymentsHistory = ({ payments, loading, paymentsError, currentPayment, dis
                 rowCell: styles.rowElement,
                 responsiveRow: styles.rowHover
               }}
-              columns={columns[process.env.REACT_APP_UTILITY_NAME]}
-              data={payments}
+              columns={columns}
+              data={sortedPayments}
               onRowClick={(_, row) => handleClick(row)}
               disableAutoOrder
               tableTitle={`${i18.t('Payments:tableTitle')} (click para ver detalle)`}

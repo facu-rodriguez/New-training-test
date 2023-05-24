@@ -14,7 +14,7 @@ import styles from './styles.module.scss';
 const Bills = ({ bills, loading, dispatch }) => {
   useEffect(() => {
     dispatch(BillsActions.getBills());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>
