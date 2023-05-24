@@ -6,11 +6,20 @@ import { actions } from './actions';
 export const defaultState = {
   billsHistory: [],
   billsHistoryLoading: false,
-  lastBill: {}
+  lastBill: {},
+  digitalBillsLoading: null,
+  digitalBills: { mensaje: '' },
+  digitalBillsError: null
 };
 
 const reducerDescription = {
-  primaryActions: [actions.GET_BILLS, actions.GET_LAST_BILL],
+  primaryActions: [
+    actions.GET_BILLS,
+    actions.GET_LAST_BILL,
+    actions.PUT_DIGITAL_BILLS,
+    actions.DELETE_DIGITAL_BILLS,
+    actions.POST_DIGITAL_BILLS
+  ],
   override: {}
 };
 

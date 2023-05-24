@@ -4,7 +4,7 @@ import { UTLabel, UTButton, UTTextInput, UTLoading } from '@widergy/energy-ui';
 import { connect } from 'react-redux';
 import { bool, string } from 'prop-types';
 
-import DigitalBillsActions from 'redux/digitalBills/actions';
+import DigitalBillsActions from 'redux/bills/actions';
 import { checkEmail } from 'utils/checkEmailsUtils';
 import { digitalTypes } from 'types/digitalTypes';
 
@@ -60,9 +60,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
 
   return show ? (
     <section className={styles.DigitalBillModalContainer}>
-      {digitalBills.digitalBills.mensaje === '' &&
-      !digitalBills.digitalBillsLoading &&
-      !digitalBills.digitalBillsError ? (
+      {digitalBills.mensaje === '' && !loading && !error ? (
         <div className={styles.DigitalBillModalContainerData}>
           <div className={styles.DigitalBillModalTitle}>
             <h1>{i18.t(`DigitalBill:actions:${type}:title`)}</h1>
@@ -115,9 +113,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
             {error ? (
               <UTLabel>{error}</UTLabel>
             ) : (
-              <UTLabel className={styles.DigitalBillModalFinalMessage}>
-                {digitalBills?.digitalBills?.mensaje}
-              </UTLabel>
+              <UTLabel className={styles.DigitalBillModalFinalMessage}>{digitalBills?.mensaje}</UTLabel>
             )}
           </UTLoading>
         </div>
@@ -137,9 +133,9 @@ DigitalBillModal.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  digitalBills: store.digitalBills,
-  loading: store.digitalBills.digitalBillsLoading,
-  error: store.digitalBills.digitalBillsError
+  digitalBills: store.bills.digitalBills,
+  loading: store.bills.digitalBillsLoading,
+  error: store.bills.digitalBillsError
 });
 
 export default connect(mapStateToProps)(DigitalBillModal);
