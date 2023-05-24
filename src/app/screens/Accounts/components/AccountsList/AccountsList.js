@@ -11,9 +11,9 @@ import AccountActions from 'redux/accounts/actions';
 import styles from './styles.module.scss';
 
 const situation = {
-  ACTIVO: { text: 'El servicio se encuentra activo', style: styles.tagActivated },
-  SUSPENDIDO: { text: 'El servicio ha sido suspendido', style: styles.tagSuspended },
-  BAJA: { text: 'El servicio se encuentra de baja', style: styles.tagUnsubscribe }
+  ACTIVO: { text: i18.t('Accounts:situation:activated'), style: styles.tagActivated },
+  SUSPENDIDO: { text: i18.t('Accounts:situation:suspended'), style: styles.tagSuspended },
+  BAJA: { text: i18.t('Accounts:situation:unsubscribe'), style: styles.tagUnsubscribe }
 };
 
 const AccountsList = ({ accounts, currentAccount, dispatch }) => {
@@ -57,9 +57,9 @@ const AccountsList = ({ accounts, currentAccount, dispatch }) => {
               </UTLabel>
             </div>
             <div className={styles.tag}>
-              <span className={situation[row.descripcion_estado].style}>
+              <UTLabel className={situation[row.descripcion_estado].style}>
                 {situation[row.descripcion_estado].text}
-              </span>
+              </UTLabel>
             </div>
           </div>
         </div>

@@ -22,7 +22,12 @@ export default {
       retry: 'Reintentar',
       noRelation: 'relación indefinida',
       accountNumber: 'Nº {{id}} - ',
-      title: 'Listado de todas las cuentas'
+      title: 'Listado de todas las cuentas',
+      situation: {
+        activated: 'El servicio se encuentra activo',
+        suspended: 'El servicio ha sido suspendido',
+        unsubscribe: 'El servicio se encuentra de baja'
+      }
     }
   }
 };

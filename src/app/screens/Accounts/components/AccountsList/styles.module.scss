@@ -58,7 +58,7 @@ $tag-width: 50px;
   justify-content: flex-end;
   margin-top: 15px;
 
-  span {
+  div {
     border-radius: 10px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -68,17 +68,17 @@ $tag-width: 50px;
 
 .tagActivated {
   background-color: var(--semantic-success-01);
-  color: var(--semantic-success-05);
+  color: var(--semantic-success-05) !important;
 }
 
 .tagUnsubscribe {
   background-color: var(--light-04);
-  color: var(--gray-04);
+  color: var(--gray-04) !important;
 }
 
 .tagSuspended {
   background-color: var(--semantic-error-02);
-  color: var(--semantic-error-05);
+  color: var(--semantic-error-05) !important;
 }
 
 @media #{$desktop-tablet} {

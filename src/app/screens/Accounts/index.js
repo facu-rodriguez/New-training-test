@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { isEmpty } from '@widergy/web-utils/lib/array';
 import { arrayOf, bool, string } from 'prop-types';
@@ -12,14 +12,14 @@ import { HOME } from 'constants/routes';
 import { accountType } from 'types/accountTypes';
 
 import styles from './styles.module.scss';
-import AccountsList from './components/AccountCards/AccountsList';
+import AccountsList from './components/AccountsList/AccountsList';
 
 const Accounts = ({ accounts, accountsError, accountsLoading, currentAccount, dispatch }) => (
   <UTLoading loading={accountsLoading}>
     {accountsError ? (
       <UTLabel>{accountsError}</UTLabel>
     ) : isEmpty(accounts) && !accountsError && !accountsLoading ? (
-      <Fragment>
+      <div className={styles.accountsContainer}>
         <UTLabel>{i18.t('Home:noAccounts')}</UTLabel>
         <UTButton
           onClick={() => dispatch(AccountActions.getAccounts())}
@@ -27,7 +27,7 @@ const Accounts = ({ accounts, accountsError, accountsLoading, currentAccount, di
         >
           {i18.t('Accounts:retry')}
         </UTButton>
-      </Fragment>
+      </div>
     ) : (
       <div className={styles.container}>
         <UTButton
@@ -38,7 +38,7 @@ const Accounts = ({ accounts, accountsError, accountsLoading, currentAccount, di
           {i18.t('Accounts:goBack')}
         </UTButton>
 
-        <h1 className={styles.accountsTitle}>{i18.t('Accounts:title')}</h1>
+        <UTLabel className={styles.accountsTitle}>{i18.t('Accounts:title')}</UTLabel>
         <div className={styles.accountsContainer}>
           <AccountsList accounts={accounts} currentAccount={currentAccount} />
         </div>
