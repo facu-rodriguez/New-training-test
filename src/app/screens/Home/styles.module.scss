@@ -1,4 +1,5 @@
 @import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_mediaQueries.scss';
 @import '_colors.scss';
 
 $margin-size: 40px;
@@ -39,6 +40,7 @@ $margin-size: 40px;
   width: 100%;
 
   .accountListButton {
+    height: 257px;
     width: 45%;
   }
 }
@@ -50,4 +52,12 @@ $margin-size: 40px;
 .billsListButton {
   @extend %buttons;
   width: 100%;
+}
+
+@media #{$desktop-tablet} {
+  .bottomSection {
+    .accountListButton {
+      height: 190px;
+    }
+  }
 }
