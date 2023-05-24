@@ -4,6 +4,7 @@ import i18 from 'i18next';
 import { UTLabel } from '@widergy/energy-ui';
 
 import DigitalBill from 'app/components/DigitalBill';
+import appConfig from 'config/appConfig';
 
 import styles from './styles.module.scss';
 
@@ -12,9 +13,11 @@ const AccountCard = ({ account }) => {
     cuenta_id: id,
     titular,
     direccion,
-    adherido_factura_digital: adheridoFacturaDigital,
+    adherido_factura_digital: isAdheredToDigitalBill,
     contact_emails: contactEmails
   } = account;
+
+  const { digitalBill } = appConfig;
 
   return (
     <div className={styles.container}>
@@ -28,9 +31,7 @@ const AccountCard = ({ account }) => {
           <UTLabel>{i18.t('Account:accountNumber', { id })}</UTLabel>
           <UTLabel>{direccion}</UTLabel>
         </div>
-        {process.env.REACT_APP_UTILITY_NAME === 'idinir' && (
-          <DigitalBill billType={adheridoFacturaDigital} email={contactEmails} />
-        )}
+        {digitalBill && <DigitalBill billType={isAdheredToDigitalBill} email={contactEmails} />}
       </div>
     </div>
   );

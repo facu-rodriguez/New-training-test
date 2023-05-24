@@ -1,18 +1,18 @@
 import React, { Fragment, useState } from 'react';
 import i18 from 'i18next';
 import { UTLabel, UTButton } from '@widergy/energy-ui';
-import { bool, array } from 'prop-types';
+import { bool, arrayOf, string } from 'prop-types';
 
 import styles from './styles.module.scss';
 import DigitalBillModal from './Components/DigitalBillModal';
 
 const DigitalBill = ({ billType, email }) => {
   const check = billType ? 'subscribed' : 'notSubscribed';
-  const [modal, setModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
 
   const handleModal = type => {
-    setModal(true);
+    setOpenModal(true);
     setModalType(type);
   };
 
@@ -36,15 +36,14 @@ const DigitalBill = ({ billType, email }) => {
         )}
       </div>
 
-      <DigitalBillModal show={modal} type={modalType} email={email} onHide={() => setModal(false)} />
+      <DigitalBillModal show={openModal} type={modalType} email={email} onHide={() => setOpenModal(false)} />
     </Fragment>
   );
 };
 
 DigitalBill.propTypes = {
   billType: bool,
-  // eslint-disable-next-line react/forbid-prop-types
-  email: array
+  email: arrayOf(string)
 };
 
 export default DigitalBill;

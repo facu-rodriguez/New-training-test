@@ -14,5 +14,6 @@ export default {
   },
   billsHistory: {
     enabled: true
-  }
+  },
+  digitalBill: true
 };
