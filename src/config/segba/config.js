@@ -10,7 +10,8 @@ export default {
   },
   initialView: {
     paymentHistoryButton: { enabled: true },
-    billsHistoryButton: { enabled: false }
+    billsHistoryButton: { enabled: false },
+    emailButton: { enabled: false }
   },
   billsHistory: {
     enabled: false

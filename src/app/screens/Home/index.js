@@ -14,6 +14,7 @@ import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
 import { billType } from 'types/billsTypes';
 import { accountType } from 'types/accountTypes';
+import appConfig from 'config/appConfig';
 
 import LastBill from './components/LastBill';
 import styles from './styles.module.scss';
@@ -103,43 +104,45 @@ const Home = ({
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
               </div>
-              <div className={styles.facturaDigital}>
-                <div className={styles.facturaDigitalBefore}>
-                  <div className={styles.facturaDigitalAfter}>
-                    <UTLabel classes={{ root: styles.facturaDigitalTitle }}>
-                      {currentAccount.adherido_factura_digital
-                        ? i18.t('Home:hasEmail')
-                        : i18.t('Home:noEmail')}
-                    </UTLabel>
-                    {currentAccount.adherido_factura_digital ? (
-                      <Fragment>
+              {appConfig.initialView.emailButton.enabled ? (
+                <div className={styles.facturaDigital}>
+                  <div className={styles.facturaDigitalBefore}>
+                    <div className={styles.facturaDigitalAfter}>
+                      <UTLabel classes={{ root: styles.facturaDigitalTitle }}>
+                        {currentAccount.adherido_factura_digital
+                          ? i18.t('Home:hasEmail')
+                          : i18.t('Home:noEmail')}
+                      </UTLabel>
+                      {currentAccount.adherido_factura_digital ? (
+                        <Fragment>
+                          <UTButton
+                            variant="outlined"
+                            classNames={{ root: styles.facturaDigitalButton }}
+                            onClick={() => openModal('update')}
+                          >
+                            {i18.t('Home:modifyEmail')}
+                          </UTButton>
+                          <UTButton
+                            variant="outlined"
+                            classNames={{ root: styles.facturaDigitalButton }}
+                            onClick={() => openModal('delete')}
+                          >
+                            {i18.t('Home:deleteEmail')}
+                          </UTButton>
+                        </Fragment>
+                      ) : (
                         <UTButton
                           variant="outlined"
                           classNames={{ root: styles.facturaDigitalButton }}
-                          onClick={() => openModal('update')}
+                          onClick={() => openModal('create')}
                         >
-                          {i18.t('Home:modifyEmail')}
+                          {i18.t('Home:createEmail')}
                         </UTButton>
-                        <UTButton
-                          variant="outlined"
-                          classNames={{ root: styles.facturaDigitalButton }}
-                          onClick={() => openModal('delete')}
-                        >
-                          {i18.t('Home:deleteEmail')}
-                        </UTButton>
-                      </Fragment>
-                    ) : (
-                      <UTButton
-                        variant="outlined"
-                        classNames={{ root: styles.facturaDigitalButton }}
-                        onClick={() => openModal('create')}
-                      >
-                        {i18.t('Home:createEmail')}
-                      </UTButton>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : null}
             </div>
             <div id="modal" className={styles.modal}>
               <div id="modal-content" className={styles.modalContent}>
