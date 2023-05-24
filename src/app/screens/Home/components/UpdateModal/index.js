@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { UTButton } from '@widergy/energy-ui';
+import { UTButton, UTLabel } from '@widergy/energy-ui';
 import { func } from 'prop-types';
 import i18 from 'i18next';
 
@@ -12,17 +12,26 @@ const UpdateModal = forwardRef(({ account, onUpdateEmails, onCancel }, ref) => {
 
   return (
     <div className={styles.modalComponent} ref={ref}>
-      <h1>{i18.t('UpdateModal:title')}</h1>
-      <p>
-        {i18.t('UpdateModal:currentEmail')}
-        {account.contact_emails[0]}
-      </p>
-      <p>{i18.t('UpdateModal:inputTitle')}</p>
-      <input type="text" value={newEmail} onInput={event => setNewEmail(event.target.value)} />
-      <UTButton onClick={onCancel}>{i18.t('UpdateModal:cancel')}</UTButton>
-      <UTButton onClick={() => onUpdateEmails([newEmail], account.cuenta_id)}>
-        {i18.t('UpdateModal:accept')}
-      </UTButton>
+      <UTLabel classes={{ root: styles.modalTitle }}>{i18.t('UpdateModal:title')}</UTLabel>
+      <div className={styles.modalSection}>
+        <UTLabel classes={{ root: styles.modalText }}>{i18.t('UpdateModal:currentEmail')}</UTLabel>
+        <UTLabel classes={{ root: styles.modalInfo }}>{account.contact_emails[0]}</UTLabel>
+      </div>
+      <div className={styles.modalSection}>
+        <UTLabel classes={{ root: styles.modalText }}>{i18.t('UpdateModal:inputTitle')}</UTLabel>
+        <input
+          className={styles.modalInput}
+          type="text"
+          value={newEmail}
+          onInput={event => setNewEmail(event.target.value)}
+        />
+      </div>
+      <div className={styles.modalSection}>
+        <UTButton onClick={onCancel}>{i18.t('UpdateModal:cancel')}</UTButton>
+        <UTButton onClick={() => onUpdateEmails([newEmail], account.cuenta_id)}>
+          {i18.t('UpdateModal:accept')}
+        </UTButton>
+      </div>
     </div>
   );
 });

@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { UTButton } from '@widergy/energy-ui';
+import { UTButton, UTLabel } from '@widergy/energy-ui';
 import { func } from 'prop-types';
 import i18 from 'i18next';
 
@@ -12,8 +12,8 @@ const CreateModal = forwardRef(({ account, onCreateEmails, onCancel }, ref) => {
 
   return (
     <div className={styles.modalComponent} ref={ref}>
-      <h1>{i18.t('CreateModal:title')}</h1>
-      <p>{i18.t('CreateModal:inputTitle')}</p>
+      <UTLabel classes={{ root: styles.title }}>{i18.t('CreateModal:title')}</UTLabel>
+      <UTLabel>{i18.t('CreateModal:inputTitle')}</UTLabel>
       <input type="text" value={newEmail} onInput={event => setNewEmail(event.target.value)} />
       <UTButton onClick={onCancel}>{i18.t('CreateModal:cancel')}</UTButton>
       <UTButton onClick={() => onCreateEmails([newEmail], account.cuenta_id)}>
