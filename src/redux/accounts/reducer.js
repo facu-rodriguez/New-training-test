@@ -9,23 +9,10 @@ export const defaultState = {
 };
 
 const reducerDescription = {
-  primaryActions: [actions.GET_ACCOUNTS],
+  primaryActions: [actions.GET_ACCOUNTS, actions.UPDATE_EMAILS],
   override: {
     [actions.SET_CURRENT_ACCOUNT]: (state, action) =>
-      Immutable.merge(state, { currentAccount: action.payload }),
-    [actions.SET_CONTACT_EMAILS]: (state, action) => {
-      const newCurrentAccount = { ...state.currentAccount };
-      const newAccounts = [...state.accounts];
-
-      const sameId = account => account.cuenta_id === state.currentAccount.cuenta_id;
-
-      newCurrentAccount.contact_emails = action.payload;
-      newAccounts.forEach(account => {
-        if (sameId(account)) Immutable.merge(account, { contact_emails: action.payload });
-      });
-
-      return Immutable.merge(state, { accounts: newAccounts, currentAccount: newCurrentAccount });
-    }
+      Immutable.merge(state, { currentAccount: action.payload })
   }
 };
 

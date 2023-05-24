@@ -70,9 +70,13 @@ const Home = ({
     }
   };
 
-  const handleNewEmail = async email => {
-    await dispatch(AccountActions.setContactEmails(email));
+  const handleUpdateEmails = async (emails, id) => {
+    await dispatch(AccountActions.updateEmails(emails, id));
     closeModal(document.getElementById('modal'));
+  };
+
+  const handleCreateEmails = emails => {
+    console.log(emails);
   };
 
   return (
@@ -141,10 +145,14 @@ const Home = ({
                 <UpdateModal
                   ref={updateRef}
                   account={currentAccount}
-                  onNewEmail={handleNewEmail}
+                  onUpdateEmails={handleUpdateEmails}
                   onCancel={() => closeModal(document.getElementById('modal'))}
                 />
-                <CreateModal ref={createRef} />
+                <CreateModal
+                  ref={createRef}
+                  onCreateEmails={handleCreateEmails}
+                  onCancel={() => closeModal(document.getElementById('modal'))}
+                />
                 <DeleteModal ref={deleteRef} />
               </div>
             </div>
