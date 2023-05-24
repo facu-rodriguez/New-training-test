@@ -80,6 +80,11 @@ const Home = ({
     closeModal(document.getElementById('modal'));
   };
 
+  const handleDeleteEmails = async (emails, id) => {
+    await dispatch(AccountActions.deleteEmails(emails, id));
+    closeModal(document.getElementById('modal'));
+  };
+
   return (
     <div className={styles.container}>
       <UTLoading loading={accountsLoading || lastBillloading}>
@@ -155,7 +160,12 @@ const Home = ({
                   onCreateEmails={handleCreateEmails}
                   onCancel={() => closeModal(document.getElementById('modal'))}
                 />
-                <DeleteModal ref={deleteRef} />
+                <DeleteModal
+                  ref={deleteRef}
+                  account={currentAccount}
+                  onDeleteEmails={handleDeleteEmails}
+                  onCancel={() => closeModal(document.getElementById('modal'))}
+                />
               </div>
             </div>
           </Fragment>

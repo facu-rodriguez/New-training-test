@@ -3,7 +3,7 @@ import { createTypes, completeTypes } from 'redux-recompose';
 import AccountService from 'services/AccountService';
 
 export const actions = createTypes(
-  completeTypes(['GET_ACCOUNTS', 'UPDATE_EMAILS', 'CREATE_EMAILS'], ['SET_CURRENT_ACCOUNT']),
+  completeTypes(['GET_ACCOUNTS', 'UPDATE_EMAILS', 'DELETE_EMAILS', 'CREATE_EMAILS'], ['SET_CURRENT_ACCOUNT']),
   '@@ACCOUNTS'
 );
 
@@ -13,7 +13,9 @@ const privateActionCreators = {
   updateEmailsSuccess: payload => ({ type: actions.UPDATE_EMAILS_SUCCESS, payload, target: 'accounts' }),
   updateEmailsFailure: payload => ({ type: actions.UPDATE_EMAILS_FAILURE, payload, target: 'accounts' }),
   createEmailsSuccess: payload => ({ type: actions.CREATE_EMAILS_SUCCESS, payload, target: 'accounts' }),
-  createEmailsFailure: payload => ({ type: actions.CREATE_EMAILS_FAILURE, payload, target: 'accounts' })
+  createEmailsFailure: payload => ({ type: actions.CREATE_EMAILS_FAILURE, payload, target: 'accounts' }),
+  deleteEmailsSuccess: payload => ({ type: actions.DELETE_EMAILS_SUCCESS, payload, target: 'accounts' }),
+  deleteEmailsFailure: payload => ({ type: actions.DELETE_EMAILS_FAILURE, payload, target: 'accounts' })
 };
 
 export const actionCreators = {
@@ -44,6 +46,23 @@ export const actionCreators = {
 
       dispatch(privateActionCreators.updateEmailsSuccess(newAccounts.data));
     } else dispatch(privateActionCreators.updateEmailsFailure(response.data.error));
+  },
+  deleteEmails: (emails, id) => async dispatch => {
+    dispatch({ type: actions.DELETE_EMAILS, target: 'accounts' });
+    const response = await AccountService.deleteEmails(emails);
+    if (response.ok) {
+      const newAccounts = await AccountService.getAccounts();
+
+      const hasSameId = account => account.cuenta_id === id;
+      await newAccounts.data.forEach(account => {
+        if (hasSameId(account)) {
+          account.contact_emails = emails;
+          account.adherido_factura_digital = false;
+          dispatch(actionCreators.setCurrentAccount(account));
+        }
+      });
+      dispatch(privateActionCreators.deleteEmailsSuccess(newAccounts.data));
+    } else dispatch(privateActionCreators.deleteEmailsFailure(response.data.error));
   },
   createEmails: (emails, id) => async dispatch => {
     dispatch({ type: actions.CREATE_EMAILS, target: 'accounts' });

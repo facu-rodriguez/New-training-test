@@ -12,7 +12,8 @@ const reducerDescription = {
   primaryActions: [actions.GET_ACCOUNTS, actions.UPDATE_EMAILS, actions.CREATE_EMAILS],
   override: {
     [actions.SET_CURRENT_ACCOUNT]: (state, action) =>
-      Immutable.merge(state, { currentAccount: action.payload })
+      Immutable.merge(state, { currentAccount: action.payload }),
+    [actions.DELETE_EMAILS_SUCCESS]: (state, action) => Immutable.merge(state, { accounts: action.payload })
   }
 };
 
