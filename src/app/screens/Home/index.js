@@ -108,13 +108,13 @@ const Home = ({
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
               </div>
-              <div className={styles.leftSection}>
+              <div className={styles.facturaDigital}>
                 <div className={styles.facturaDigitalBefore}>
                   <div className={styles.facturaDigitalAfter}>
                     <UTLabel classes={{ root: styles.facturaDigitalTitle }}>
                       {currentAccount.adherido_factura_digital
-                        ? 'Adherido a factura digital'
-                        : 'No adherido a factura digital'}
+                        ? i18.t('Home:hasEmail')
+                        : i18.t('Home:noEmail')}
                     </UTLabel>
                     {currentAccount.adherido_factura_digital ? (
                       <>
@@ -123,14 +123,14 @@ const Home = ({
                           classNames={{ root: styles.facturaDigitalButton }}
                           onClick={() => openModal(updateRef)}
                         >
-                          Modificar
+                          {i18.t('Home:modifyEmail')}
                         </UTButton>
                         <UTButton
                           variant="outlined"
                           classNames={{ root: styles.facturaDigitalButton }}
                           onClick={() => openModal(deleteRef)}
                         >
-                          Darse de Baja
+                          {i18.t('Home:deleteEmail')}
                         </UTButton>
                       </>
                     ) : (
@@ -139,7 +139,7 @@ const Home = ({
                         classNames={{ root: styles.facturaDigitalButton }}
                         onClick={() => openModal(createRef)}
                       >
-                        Alta
+                        {i18.t('Home:createEmail')}
                       </UTButton>
                     )}
                   </div>

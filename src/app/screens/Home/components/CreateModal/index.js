@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import { UTButton } from '@widergy/energy-ui';
 import { func } from 'prop-types';
+import i18 from 'i18next';
 
 import { accountType } from 'types/accountTypes';
 
@@ -11,11 +12,13 @@ const CreateModal = forwardRef(({ account, onCreateEmails, onCancel }, ref) => {
 
   return (
     <div className={styles.modalComponent} ref={ref}>
-      <h1>Adhesion a factura digital</h1>
-      <p>Ingrese el email en el cual quiere recibir su factura</p>
+      <h1>{i18.t('CreateModal:title')}</h1>
+      <p>{i18.t('CreateModal:inputTitle')}</p>
       <input type="text" value={newEmail} onInput={event => setNewEmail(event.target.value)} />
-      <UTButton onClick={onCancel}>Cancelar</UTButton>
-      <UTButton onClick={() => onCreateEmails([newEmail], account.cuenta_id)}>Aceptar</UTButton>
+      <UTButton onClick={onCancel}>{i18.t('CreateModal:cancel')}</UTButton>
+      <UTButton onClick={() => onCreateEmails([newEmail], account.cuenta_id)}>
+        {i18.t('CreateModal:accept')}
+      </UTButton>
     </div>
   );
 });

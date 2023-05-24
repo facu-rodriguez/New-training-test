@@ -41,6 +41,12 @@ $margin-size: 40px;
   @extend %buttons;
 }
 
+.facturaDigital {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
 .facturaDigitalBefore {
   background: linear-gradient(
     90deg,
@@ -102,4 +108,16 @@ $margin-size: 40px;
 
 .modalComponent {
   display: none;
+}
+
+@media (max-width: 1800px) {
+  .facturaDigital {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .facturaDigitalAfter {
+    background: none;
+  }
 }
