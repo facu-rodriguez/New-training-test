@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { UTButton, UTLabel, UTLoading } from '@widergy/energy-ui';
@@ -16,10 +16,8 @@ import { billType } from 'types/billsTypes';
 import { accountType } from 'types/accountTypes';
 
 import LastBill from './components/LastBill';
-import UpdateModal from './components/UpdateModal';
 import styles from './styles.module.scss';
-import CreateModal from './components/CreateModal';
-import DeleteModal from './components/DeleteModal';
+import EmailModal from './components/EmailModal';
 
 const Home = ({
   accounts,
@@ -36,14 +34,12 @@ const Home = ({
     if (objectIsEmpty(lastBill) && !lastBillError && !lastBillloading) dispatch(BillsActions.getLastBill());
   }, []);
 
-  const updateRef = useRef(null);
-  const deleteRef = useRef(null);
-  const createRef = useRef(null);
+  const [modalType, setModalType] = useState('');
 
-  const openModal = modalType => {
+  const openModal = type => {
     document.getElementById('modal').style.display = 'block';
 
-    modalType.current.style.display = 'block';
+    setModalType(type);
 
     const modal = document.getElementById(`modal-content`);
     modal.style.display = 'block';
@@ -54,9 +50,6 @@ const Home = ({
   };
 
   const closeModal = modalBg => {
-    updateRef.current.style.display = 'none';
-    deleteRef.current.style.display = 'none';
-    createRef.current.style.display = 'none';
     const modal = document.getElementById('modal-content');
     modal.style.opacity = 0;
     modal.style.marginTop = `${13}%`;
@@ -70,18 +63,20 @@ const Home = ({
     }
   };
 
-  const handleUpdateEmails = async (emails, id) => {
-    await dispatch(AccountActions.updateEmails(emails, id));
-    closeModal(document.getElementById('modal'));
-  };
-
-  const handleCreateEmails = async (emails, id) => {
-    await dispatch(AccountActions.createEmails(emails, id));
-    closeModal(document.getElementById('modal'));
-  };
-
-  const handleDeleteEmails = async (emails, id) => {
-    await dispatch(AccountActions.deleteEmails(emails, id));
+  const handleAccept = async (emails, id) => {
+    switch (modalType) {
+      case 'update':
+        await dispatch(AccountActions.updateEmails(emails, id));
+        break;
+      case 'delete':
+        await dispatch(AccountActions.deleteEmails(emails, id));
+        break;
+      case 'create':
+        await dispatch(AccountActions.createEmails(emails, id));
+        break;
+      default:
+        break;
+    }
     closeModal(document.getElementById('modal'));
   };
 
@@ -117,27 +112,27 @@ const Home = ({
                         : i18.t('Home:noEmail')}
                     </UTLabel>
                     {currentAccount.adherido_factura_digital ? (
-                      <>
+                      <Fragment>
                         <UTButton
                           variant="outlined"
                           classNames={{ root: styles.facturaDigitalButton }}
-                          onClick={() => openModal(updateRef)}
+                          onClick={() => openModal('update')}
                         >
                           {i18.t('Home:modifyEmail')}
                         </UTButton>
                         <UTButton
                           variant="outlined"
                           classNames={{ root: styles.facturaDigitalButton }}
-                          onClick={() => openModal(deleteRef)}
+                          onClick={() => openModal('delete')}
                         >
                           {i18.t('Home:deleteEmail')}
                         </UTButton>
-                      </>
+                      </Fragment>
                     ) : (
                       <UTButton
                         variant="outlined"
                         classNames={{ root: styles.facturaDigitalButton }}
-                        onClick={() => openModal(createRef)}
+                        onClick={() => openModal('create')}
                       >
                         {i18.t('Home:createEmail')}
                       </UTButton>
@@ -148,23 +143,11 @@ const Home = ({
             </div>
             <div id="modal" className={styles.modal}>
               <div id="modal-content" className={styles.modalContent}>
-                <UpdateModal
-                  ref={updateRef}
+                <EmailModal
                   account={currentAccount}
-                  onUpdateEmails={handleUpdateEmails}
+                  modalType={modalType}
                   onCancel={() => closeModal(document.getElementById('modal'))}
-                />
-                <CreateModal
-                  ref={createRef}
-                  account={currentAccount}
-                  onCreateEmails={handleCreateEmails}
-                  onCancel={() => closeModal(document.getElementById('modal'))}
-                />
-                <DeleteModal
-                  ref={deleteRef}
-                  account={currentAccount}
-                  onDeleteEmails={handleDeleteEmails}
-                  onCancel={() => closeModal(document.getElementById('modal'))}
+                  onAccept={handleAccept}
                 />
               </div>
             </div>
