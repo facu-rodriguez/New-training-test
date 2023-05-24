@@ -26,7 +26,9 @@ export default {
       currentEmail: 'Su email actual es: ',
       inputTitle: 'Ingrese el nuevo email a adherir: ',
       cancel: 'Cancelar',
-      accept: 'Aceptar'
+      accept: 'Aceptar',
+      emailTip: 'Ingrese un email valido',
+      exampleEmail: 'example@example.com'
     },
     DeleteModal: {
       title: 'Baja de factura digital',
@@ -38,7 +40,9 @@ export default {
       title: 'Adhesion a factura digital',
       inputTitle: 'Ingrese el email en el cual quiere recibir su factura',
       cancel: 'Cancelar',
-      accept: 'Aceptar'
+      accept: 'Aceptar',
+      emailTip: 'Ingrese un email valido',
+      exampleEmail: 'example@example.com'
     }
   }
 };

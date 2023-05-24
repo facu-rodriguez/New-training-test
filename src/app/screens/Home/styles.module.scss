@@ -137,10 +137,6 @@ $margin-size: 40px;
   background-color: #{$input-primary};
 }
 
-.modalInput {
-  @extend %modalField;
-}
-
 @media (max-width: 1800px) {
   .facturaDigital {
     width: 100%;

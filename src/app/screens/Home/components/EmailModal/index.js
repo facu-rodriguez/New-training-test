@@ -1,4 +1,4 @@
-import { UTButton, UTLabel } from '@widergy/energy-ui';
+import { UTButton, UTLabel, UTTextInput } from '@widergy/energy-ui';
 import { func, string } from 'prop-types';
 import React, { Fragment, useState } from 'react';
 import i18 from 'i18next';
@@ -19,7 +19,9 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
         inputTitle: i18.t('UpdateModal:inputTitle'),
         currentEmail: i18.t('UpdateModal:currentEmail'),
         cancel: i18.t('UpdateModal:cancel'),
-        accept: i18.t('UpdateModal:accept')
+        accept: i18.t('UpdateModal:accept'),
+        emailTip: i18.t('UpdateModal:emailTip'),
+        exampleEmail: i18.t('UpdateModal:exampleEmail')
       };
       break;
     case 'delete':
@@ -37,12 +39,22 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
         showInput: true,
         inputTitle: i18.t('CreateModal:inputTitle'),
         cancel: i18.t('CreateModal:cancel'),
-        accept: i18.t('CreateModal:accept')
+        accept: i18.t('CreateModal:accept'),
+        emailTip: i18.t('CreateModal:emailTip'),
+        exampleEmail: i18.t('CreateModal:exampleEmail')
       };
       break;
     default:
       break;
   }
+
+  const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const [isValid, setIsValid] = useState(false);
+
+  const validateEmail = value => {
+    setNewEmail(value);
+    setIsValid(emailRegex.test(value));
+  };
 
   return (
     <Fragment>
@@ -58,17 +70,22 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
       {modalSettings.showInput ? (
         <div className={styles.modalSection}>
           <UTLabel classes={{ root: styles.modalText }}>{modalSettings.inputTitle}</UTLabel>
-          <input
-            className={styles.modalInput}
+          <UTTextInput
             type="text"
-            value={newEmail}
-            onInput={event => setNewEmail(event.target.value)}
+            label={modalSettings.exampleEmail}
+            input={{ name: 'input', value: newEmail }}
+            onChange={event => validateEmail(event.target.value)}
+            helperText={!isValid && newEmail.length > 0 && modalSettings.emailTip}
+            error={!isValid && newEmail.length > 0}
           />
         </div>
       ) : null}
       <div className={styles.modalSection}>
         <UTButton onClick={onCancel}>{i18.t('UpdateModal:cancel')}</UTButton>
-        <UTButton onClick={() => onAccept([newEmail], account.cuenta_id)}>
+        <UTButton
+          disabled={!isValid && modalType !== 'delete'}
+          onClick={() => onAccept([newEmail], account.cuenta_id)}
+        >
           {i18.t('UpdateModal:accept')}
         </UTButton>
       </div>
