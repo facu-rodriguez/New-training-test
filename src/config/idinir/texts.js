@@ -1,7 +1,12 @@
 export default {
   es: {
     Account: {
-      accountNumber: 'Cuenta N°: {{id}}'
+      accountNumber: 'Cuenta N°: {{id}}',
+      goToList: 'Listado de Cuentas',
+      accountsListTitle: 'Listado de Cuentas',
+      relacion: 'Relacion: ',
+      status: 'Estado: ',
+      waitingAccountTitle: 'Seleccione una cuenta'
     },
     Bills: {
       billsListTitle: 'Factura actual',

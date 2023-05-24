@@ -8,7 +8,7 @@ import { objectIsEmpty } from '@widergy/web-utils/lib/object';
 import i18 from 'i18next';
 import DescriptionIcon from '@material-ui/icons/Description';
 
-import { BILLS_HISTORY, PAYMENTS_HISTORY } from 'constants/routes';
+import { BILLS_HISTORY, ACCOUNTS_LIST, PAYMENTS_HISTORY } from 'constants/routes';
 import AccountActions from 'redux/accounts/actions';
 import BillsActions from 'redux/bills/actions';
 import CurrentAccount from 'app/components/CurrentAccount';
@@ -52,6 +52,13 @@ const Home = ({
                 >
                   {i18.t('Bills:goToHistory')}
                 </UTButton>
+                <UTButton
+                  onClick={() => dispatch(push(ACCOUNTS_LIST, accounts))}
+                  classNames={{ root: styles.accountsListButton }}
+                  Icon={DescriptionIcon}
+                >
+                  {i18.t('Account:goToList')}
+                </UTButton>
               </div>
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
@@ -87,10 +94,10 @@ const mapStateToProps = store => ({
   accounts: store.accounts.accounts,
   currentAccount: store.accounts.currentAccount,
   accountsError: store.accounts.accountsError,
+  accountsLoading: store.accounts.accountsLoading,
   lastBill: store.bills.lastBill,
   lastBillError: store.bills.lastBillError,
-  lastBillLoading: store.bills.lastBillLoading,
-  accountsLoading: store.accounts.accountsLoading
+  lastBillLoading: store.bills.lastBillLoading
 });
 
 export default connect(mapStateToProps)(Home);

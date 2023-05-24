@@ -19,11 +19,11 @@ $table-color: #FFF;
 }
 
 .tableRow {
+  background-color: $table-color;
+  border-bottom: 0;
+  border: $border;
   display: flex;
   flex-direction: row;
-  border: $border;
-  border-bottom: 0;
-  background-color: $table-color;
 }
 
 .tableRow:last-child {

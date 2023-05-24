@@ -15,26 +15,26 @@ $margin-size: 40px;
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   grid-row-gap: $margin-size;
+  justify-content: space-between;
   margin-top: $margin-size;
   width: 100%;
 }
 
 .rightSection {
   display: flex;
-  width: 45%;
+  width: 48%;
 }
 
 .leftSection {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 45%;
+  flex-direction: row;
+  width: 48%;
 }
 
 %buttons {
   height: 100%;
+  width: 100%;
 }
 
 .billsListButton {
@@ -44,4 +44,8 @@ $margin-size: 40px;
 .paymentsListButton {
   @extend %buttons;
   height: 200px;
+}
+
+.accountsListButton {
+  @extend %buttons;
 }
