@@ -9,7 +9,7 @@ export const defaultState = {
 };
 
 const reducerDescription = {
-  primaryActions: [actions.GET_ACCOUNTS, actions.UPDATE_EMAILS],
+  primaryActions: [actions.GET_ACCOUNTS, actions.UPDATE_EMAILS, actions.CREATE_EMAILS],
   override: {
     [actions.SET_CURRENT_ACCOUNT]: (state, action) =>
       Immutable.merge(state, { currentAccount: action.payload })

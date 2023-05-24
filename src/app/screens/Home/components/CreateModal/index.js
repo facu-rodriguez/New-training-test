@@ -2,9 +2,11 @@ import React, { forwardRef, useState } from 'react';
 import { UTButton } from '@widergy/energy-ui';
 import { func } from 'prop-types';
 
+import { accountType } from 'types/accountTypes';
+
 import styles from '../../styles.module.scss';
 
-const CreateModal = forwardRef(({ onNewEmail, onCancel }, ref) => {
+const CreateModal = forwardRef(({ account, onCreateEmails, onCancel }, ref) => {
   const [newEmail, setNewEmail] = useState('');
 
   return (
@@ -13,13 +15,14 @@ const CreateModal = forwardRef(({ onNewEmail, onCancel }, ref) => {
       <p>Ingrese el email en el cual quiere recibir su factura</p>
       <input type="text" value={newEmail} onInput={event => setNewEmail(event.target.value)} />
       <UTButton onClick={onCancel}>Cancelar</UTButton>
-      <UTButton onClick={() => onNewEmail([newEmail])}>Aceptar</UTButton>
+      <UTButton onClick={() => onCreateEmails([newEmail], account.cuenta_id)}>Aceptar</UTButton>
     </div>
   );
 });
 
 CreateModal.propTypes = {
-  onNewEmail: func,
+  account: accountType,
+  onCreateEmails: func,
   onCancel: func
 };
 

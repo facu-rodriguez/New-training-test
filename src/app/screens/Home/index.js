@@ -75,8 +75,9 @@ const Home = ({
     closeModal(document.getElementById('modal'));
   };
 
-  const handleCreateEmails = emails => {
-    console.log(emails);
+  const handleCreateEmails = async (emails, id) => {
+    await dispatch(AccountActions.createEmails(emails, id));
+    closeModal(document.getElementById('modal'));
   };
 
   return (
@@ -150,6 +151,7 @@ const Home = ({
                 />
                 <CreateModal
                   ref={createRef}
+                  account={currentAccount}
                   onCreateEmails={handleCreateEmails}
                   onCancel={() => closeModal(document.getElementById('modal'))}
                 />
