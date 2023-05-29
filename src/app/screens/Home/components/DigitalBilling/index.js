@@ -1,55 +1,57 @@
 import React, { Fragment } from 'react';
 import { arrayOf, bool, func, string } from 'prop-types';
-import { UTCard, UTLabel, UTButton } from '@widergy/energy-ui';
+import { UTCard, UTLabel, UTButton, UTLoading } from '@widergy/energy-ui';
 import i18 from 'i18next';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
+
+import { tagTypes } from 'types/tagTypes';
+import IconTag from 'app/components/IconTag';
 
 import styles from './styles.module.scss';
 
-const DigitalBilling = ({ emails, handleModify, handleSubscribe, handleUnsubscribe, subscription }) => (
+const DigitalBilling = ({
+  emails,
+  handleModify,
+  handleSubscribe,
+  handleUnsubscribe,
+  loading,
+  subscription,
+  tagState
+}) => (
   <UTCard classNames={{ base: styles.digitalBilling }}>
-    <UTLabel className={styles.title}>{i18.t('Home:digitalBilling')}</UTLabel>
-    {subscription ? (
-      <Fragment>
-        <div className={styles['subscriptionTag-success']}>
-          <CheckCircleIcon className={styles['icon-success']} />
-          <span>{i18.t('Home:digitalBillSubscribed')}</span>
-        </div>
+    <UTLoading loading={loading}>
+      <UTLabel className={styles.title}>{i18.t('digitalBills:digitalBilling')}</UTLabel>
+      <IconTag tagState={tagState} />
+      {subscription && (
         <ul className={styles.emailList}>
           <span>Emails asociados:</span>
           {emails.map(email => (
             <li key={email}>{email}</li>
           ))}
         </ul>
-        <div className={styles.buttonsBox}>
-          <UTButton classNames={{ root: styles['digitalBillingButtons-modify'] }} onClick={handleModify}>
-            {i18.t('Home:digitalBillingModify')}
-          </UTButton>
-          <UTButton
-            classNames={{ root: styles['digitalBillingButtons-unsubscribe'] }}
-            onClick={handleUnsubscribe}
-          >
-            {i18.t('Home:digitalBillingUnsubscribe')}
-          </UTButton>
-        </div>
-      </Fragment>
-    ) : (
-      <Fragment>
-        <div className={styles['subscriptionTag-error']}>
-          <CancelIcon className={styles['icon-error']} />
-          <span>{i18.t('Home:digitalBillNotSubscribed')}</span>
-        </div>
-        <div className={styles.buttonsBox}>
+      )}
+      <div className={styles.buttonsBox}>
+        {subscription ? (
+          <Fragment>
+            <UTButton classNames={{ root: styles['digitalBillingButtons-modify'] }} onClick={handleModify}>
+              {i18.t('digitalBills:digitalBillingModify')}
+            </UTButton>
+            <UTButton
+              classNames={{ root: styles['digitalBillingButtons-unsubscribe'] }}
+              onClick={handleUnsubscribe}
+            >
+              {i18.t('digitalBills:digitalBillingUnsubscribe')}
+            </UTButton>
+          </Fragment>
+        ) : (
           <UTButton
             classNames={{ root: styles['digitalBillingButtons-subscribe'] }}
             onClick={handleSubscribe}
           >
-            {i18.t('Home:digitalBillingSubscribe')}
+            {i18.t('digitalBills:digitalBillingSubscribe')}
           </UTButton>
-        </div>
-      </Fragment>
-    )}
+        )}
+      </div>
+    </UTLoading>
   </UTCard>
 );
 
@@ -58,7 +60,9 @@ DigitalBilling.propTypes = {
   handleModify: func,
   handleSubscribe: func,
   handleUnsubscribe: func,
-  subscription: bool
+  loading: bool,
+  subscription: bool,
+  tagState: tagTypes
 };
 
 export default DigitalBilling;

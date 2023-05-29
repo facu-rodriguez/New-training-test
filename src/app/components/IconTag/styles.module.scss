@@ -1,0 +1,54 @@
+@import 'scss/variables/_fontSizes.scss';
+@import '_colors.scss';
+
+.subscriptionTag {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  font-size: $small;
+  overflow: hidden;
+  padding: 4px 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: fit-content;
+
+  &-error {
+    @extend .subscriptionTag;
+    background-color: $primary-variant-3;
+    color: $error;
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &-success {
+    @extend .subscriptionTag;
+    background-color: $primary-text-button-hover;
+    color: $input-primary;
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .icon {
+    height: 16px;
+    margin-right: 4px;
+    width: 16px;
+
+    &-error {
+      @extend .icon;
+      color: $error;
+    }
+
+    &-success {
+      @extend .icon;
+      color: $input-primary;
+    }
+  }
+}

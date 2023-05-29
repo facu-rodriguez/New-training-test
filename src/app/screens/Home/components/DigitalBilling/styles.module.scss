@@ -129,12 +129,8 @@
         color: $input-primary;
       }
     }
-  }
-}
 
-@media #{$desktop-tablet} {
-  .digitalBilling {
-    .buttonsBox {
+    @media #{$desktop-tablet} {
       justify-content: flex-end;
     }
   }

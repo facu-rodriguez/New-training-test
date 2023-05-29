@@ -14,13 +14,15 @@ export default {
       amount_to_pay: 'Monto a pagar'
     },
     Home: {
+      noAccounts: 'No hay cuentas'
+    },
+    digitalBills: {
       digitalBilling: 'Facturación digital',
       digitalBillingModify: 'Modificar',
       digitalBillingSubscribe: 'Adhesión',
       digitalBillingUnsubscribe: 'Baja',
       digitalBillNotSubscribed: 'No adherido a factura digital',
       digitalBillSubscribed: 'Adherido a factura digital',
-      noAccounts: 'No hay cuentas',
       modal: {
         accept: 'Aceptar',
         cancel: 'Cancelar',
