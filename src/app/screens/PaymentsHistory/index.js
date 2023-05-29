@@ -11,6 +11,7 @@ import UTLoading from 'app/components/UTLoading';
 import PaymentsActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
 import appConfig from 'config/appConfig';
+import { formatDate, formatAmount } from 'utils/formatUtils';
 
 import styles from './styles.module.scss';
 
@@ -24,15 +25,10 @@ const PaymentsHistory = ({ payments, paymentsError, paymentsLoading, dispatch })
       [...payments]
         .sort((a, b) => new Date(a.datetime.split('T')[0].trim()) - new Date(b.datetime.split('T')[0].trim()))
         .map(payment => {
-          const formatDate = new Date(payment.datetime.split('T')[0].trim())
-            .toLocaleDateString('es-ES')
-            .replace(/\//g, '-');
-          const formatAmount = payment.amount.toLocaleString('es-ES', {
-            maximumFractionDigits: 1,
-            minimumFractionDigits: 1
-          });
+          const formattedDate = formatDate(payment.datetime);
+          const formattedAmount = formatAmount(payment.amount);
 
-          return { ...payment, datetime: formatDate, amount: formatAmount };
+          return { ...payment, datetime: formattedDate, amount: formattedAmount };
         }),
     [payments]
   );
@@ -42,20 +38,34 @@ const PaymentsHistory = ({ payments, paymentsError, paymentsLoading, dispatch })
     dispatch(push(`${PAYMENTS_HISTORY}/${row.datetime}`));
   };
 
+  const handleReload = () => {
+    dispatch(PaymentsActions.getPayments());
+  };
+
   return (
-    <div className={styles.container}>
-      <UTLoading loading={paymentsLoading}>
-        <UTTable
-          classNames={{ rowContainerClickable: styles.clickable }}
-          columns={appConfig.PaymentColumns}
-          data={formattedPayments}
-          disableAutoOrder
-          tableTitle={i18.t('Payments:paymentsTitle')}
-          disablePagination
-          onRowClick={handleClick}
-        />
-      </UTLoading>
-    </div>
+    <UTLoading loading={paymentsLoading}>
+      <div className={styles.container}>
+        {!paymentsError ? (
+          <UTTable
+            classNames={{ rowContainerClickable: styles.clickable }}
+            columns={appConfig.PaymentColumns}
+            data={formattedPayments}
+            disableAutoOrder
+            tableTitle={i18.t('Payments:paymentsTitle')}
+            disablePagination
+            onRowClick={handleClick}
+          />
+        ) : (
+          <div>
+            {i18.t('Payments:error')}
+            <button className={styles.reload} onClick={handleReload}>
+              {' '}
+              {i18.t('Payments:here')}
+            </button>
+          </div>
+        )}
+      </div>
+    </UTLoading>
   );
 };
 

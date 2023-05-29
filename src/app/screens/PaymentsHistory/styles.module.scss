@@ -1,4 +1,6 @@
 @import 'scss/variables/_sizes.scss';
+@import 'scss/variables/_fontSizes.scss';
+@import '_colors.scss';
 @import '_general.scss';
 
 .container {
@@ -13,4 +15,13 @@
 
 .clickable {
   cursor: pointer;
+}
+
+.reload {
+  @extend .clickable;
+  border: 0;
+  background-color: transparent; 
+  color: $primary-variant-1;
+  font-size: $large;
+  font-weight: 600;
 }

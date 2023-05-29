@@ -1,5 +1,6 @@
+import i18 from 'i18next';
+
 import Colors from './scss/_colors.scss';
-import { columns as PaymentColumns } from './paymentColumns';
 
 export default {
   Colors,
@@ -16,5 +17,18 @@ export default {
   billsHistory: {
     enabled: false
   },
-  PaymentColumns
+  PaymentColumns: [
+    {
+      name: i18.t('Payments:datetime'),
+      key: 'datetime'
+    },
+    {
+      name: i18.t('Payments:paymentMethod'),
+      key: 'payment_method'
+    },
+    {
+      name: i18.t('Payments:statusLabel'),
+      key: 'status_label'
+    }
+  ]
 };

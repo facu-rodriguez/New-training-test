@@ -11,55 +11,54 @@ import { PAYMENTS_HISTORY } from 'constants/routes';
 
 import styles from './styles.module.scss';
 
-const Payment = ({ payment = {}, dispatch }) => {
+const Payment = ({ selectedPayment = {}, dispatch }) => {
   useEffect(() => {
-    if (objectIsEmpty(payment)) {
+    if (objectIsEmpty(selectedPayment)) {
       dispatch(push(PAYMENTS_HISTORY));
     }
 
-    return () => dispatch(PaymentsActions.setSelectedPayment({}));
+    return () => dispatch(PaymentsActions.cleanCurrentPayment());
   }, []);
 
   return (
-    <div className={styles.container}>
-      <UTLoading loading={objectIsEmpty(payment)} className={styles.container}>
+    <UTLoading loading={objectIsEmpty(selectedPayment)} className={styles.container}>
+      <div className={styles.container}>
         <UTCard classNames={{ base: styles.account_card }}>
           <div className={styles.flare} />
           <UTLabel className={styles.title}>{i18next.t('Payments:detailsTitle')}</UTLabel>
           <div className={styles['detailsContainer-date']}>
             <UTLabel className={styles.label}>{i18next.t('Payments:datetime')}</UTLabel>
-            <div className={styles.detail}>{payment.datetime}</div>
+            <div className={styles.detail}>{selectedPayment.datetime}</div>
           </div>
           <div className={styles.detailsContainer}>
             <UTLabel className={styles.label}>{i18next.t('Payments:client_number')}</UTLabel>
-            <div className={styles.detail}>{payment.client_number}</div>
+            <div className={styles.detail}>{selectedPayment.client_number}</div>
           </div>
           <div className={styles.detailsContainer}>
             <UTLabel className={styles.label}>{i18next.t('Payments:payment_method')}</UTLabel>
-            <div className={styles.detail}>{payment.payment_method}</div>
+            <div className={styles.detail}>{selectedPayment.payment_method}</div>
           </div>
           <div className={styles.detailsContainer}>
             <UTLabel className={styles.label}>{i18next.t('Payments:payment_code')}</UTLabel>
-            <div className={styles.detail}>{payment.payment_code || '-'}</div>
+            <div className={styles.detail}>{selectedPayment.payment_code || '-'}</div>
           </div>
           <div className={styles['detailsContainer-amount']}>
             <UTLabel className={styles.label}>{i18next.t('Payments:amount')}</UTLabel>
-            <div className={styles.detail}>{payment.amount}</div>
+            <div className={styles.detail}>{`$ ${selectedPayment.amount}`}</div>
           </div>
-          <div className={styles[`status-${payment.status}`]}>{payment.status_label}</div>
+          <div className={styles[`status-${selectedPayment.status}`]}>{selectedPayment.status_label}</div>
         </UTCard>
-      </UTLoading>
-    </div>
+      </div>
+    </UTLoading>
   );
 };
 
 Payment.propTypes = {
-  payment: paymentType
+  selectedPayment: paymentType
 };
 
 const mapStateToProps = store => ({
-  payment: store.payments.payment,
-  paymentLoading: store.payments.paymentLoading
+  selectedPayment: store.payments.payment
 });
 
 export default connect(mapStateToProps)(Payment);

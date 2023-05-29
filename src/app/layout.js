@@ -10,7 +10,7 @@ import Home from './screens/Home';
 import BillsHistory from './screens/BillsHistory';
 import PaymentsHistory from './screens/PaymentsHistory';
 import styles from './styles.module.scss';
-import Payment from './screens/Payment';
+import Payment from './screens/PaymentsHistory/Payment';
 
 const App = () => (
   <div className={styles.fullContainer}>

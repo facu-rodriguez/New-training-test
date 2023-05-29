@@ -19,12 +19,14 @@ export default {
     Payments: {
       paymentsTitle: 'Listado de pagos',
       datetime: 'Fecha',
-      client_number: 'Nro. de cliente',
-      status_label: 'Estado',
+      clientNumber: 'Nro. de cliente',
+      statusLabel: 'Estado',
       amount: 'Monto',
-      payment_code: 'Código de pago',
-      payment_method: 'Método de pago',
-      detailsTitle: 'Detalles del pago'
+      paymentCode: 'Código de pago',
+      paymentMethod: 'Método de pago',
+      detailsTitle: 'Detalles del pago',
+      error: 'Parece que hubo un error. Para recargar haz click',
+      here: 'aquí'
     }
   }
 };
