@@ -34,7 +34,7 @@ $margin-size: 40px;
 }
 
 %buttons {
-  height: 100%;
+  flex: 1;
 }
 
 .billsListButton {
@@ -46,7 +46,7 @@ $margin-size: 40px;
   background-color: $primary-variant-3 !important;
   cursor: pointer;
   display: flex;
-  height: 100%;
+  flex: 1;
   justify-content: center;
   margin-top: 20px;
   padding: 0 20px;
