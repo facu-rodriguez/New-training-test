@@ -31,15 +31,15 @@ const Payment = ({ selectedPayment = {}, dispatch }) => {
             <div className={styles.detail}>{selectedPayment.datetime}</div>
           </div>
           <div className={styles.detailsContainer}>
-            <UTLabel className={styles.label}>{i18next.t('Payments:client_number')}</UTLabel>
+            <UTLabel className={styles.label}>{i18next.t('Payments:clientNumber')}</UTLabel>
             <div className={styles.detail}>{selectedPayment.client_number}</div>
           </div>
           <div className={styles.detailsContainer}>
-            <UTLabel className={styles.label}>{i18next.t('Payments:payment_method')}</UTLabel>
+            <UTLabel className={styles.label}>{i18next.t('Payments:paymentMethod')}</UTLabel>
             <div className={styles.detail}>{selectedPayment.payment_method}</div>
           </div>
           <div className={styles.detailsContainer}>
-            <UTLabel className={styles.label}>{i18next.t('Payments:payment_code')}</UTLabel>
+            <UTLabel className={styles.label}>{i18next.t('Payments:paymentCode')}</UTLabel>
             <div className={styles.detail}>{selectedPayment.payment_code || '-'}</div>
           </div>
           <div className={styles['detailsContainer-amount']}>
