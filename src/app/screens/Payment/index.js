@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { UTLabel, UTLoading } from '@widergy/energy-ui';
+import { UTLabel, UTButton, UTLoading } from '@widergy/energy-ui';
 import { arrayOf, bool } from 'prop-types';
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom';
 import i18 from 'i18next';
 
 import PaymentActions from 'redux/payments/actions';
@@ -12,6 +12,7 @@ import styles from './styles.module.scss';
 
 const Payment = ({ payments, currentPayment, loading, dispatch }) => {
   const { paymentId } = useParams();
+  const history = useHistory();
 
   const findPaymentById = id => payments.find(({ datetime }) => id === datetime);
 
@@ -47,16 +48,21 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
       <UTLoading loading={loading}>
         {currentPayment ? (
           <div className={styles.container}>
-            {Object.keys(currentPayment).map(key =>
-              currentPayment[key] ? (
-                <div className={styles.item}>
-                  <UTLabel classes={{ root: styles.itemTitle }}>{i18.t(`Payments:${key}`)}:</UTLabel>
-                  <UTLabel classes={{ root: styles.itemValue }}>{formatValue(currentPayment[key])}</UTLabel>
-                </div>
-              ) : (
-                <></>
-              )
-            )}
+            <div className={styles.card}>
+              {Object.keys(currentPayment).map(key =>
+                currentPayment[key] ? (
+                  <div className={styles.item}>
+                    <UTLabel classes={{ root: styles.itemTitle }}>{i18.t(`Payments:Item:${key}`)}:</UTLabel>
+                    <UTLabel classes={{ root: styles.itemValue }}>{formatValue(currentPayment[key])}</UTLabel>
+                  </div>
+                ) : (
+                  <></>
+                )
+              )}
+            </div>
+            <UTButton classes={{ root: styles.backButton }} onClick={() => history.goBack()}>
+              {i18.t('Payments:Item:goBack')}
+            </UTButton>
           </div>
         ) : (
           <></>

@@ -1,6 +1,7 @@
 @import 'scss/variables/_sizes.scss';
 @import 'scss/variables/_fontSizes.scss';
 @import '_general.scss';
+@import '_colors.scss';
 
 $primary-color: #182C49;
 $secondary-color: #677489;
@@ -14,28 +15,42 @@ $item-height: 250px;
 
 .container {
   align-items: flex-start;
-  background-repeat: no-repeat;
-  background-size: 12px 400px;
-  border: 1px solid $secondary-color;
-  border-radius: 16px;
-  box-shadow: 1px 2px 10px $shadow-color;
   display: flex;
   flex-direction: column;
   height: calc(100% - #{$topbar-heigth});
   margin: auto;
   margin-top: 80px;
-  padding: 40px;
+  max-width: 600px; //makeresponsive
+}
+
+.card {
+  border: 1px solid $secondary-color;
+  border-radius: 16px;
+  box-shadow: 1px 2px 10px $shadow-color;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
   text-transform: capitalize;
-  width: 700px;
+  width: 100%;
 }
 
 .item {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   padding: 3px 0;
 }
 
 .itemTitle {
-  width: 200px;
+  width: 220px;
+}
+
+.backButton {
+  background-color: #{$primary-variant-3};
+  color: #{$white};
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.backButton:hover {
+  background-color: #{$primary-button-hover};
 }
