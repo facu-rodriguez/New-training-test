@@ -33,7 +33,8 @@ export default {
         subscribeTitle: 'Adhesión a factura digital',
         subscribeBody: 'Ingrese el email en el cual quiere recibir su factura',
         unsubscribeBody: 'Usted está a punto de deshaderirse de factura digital',
-        unsubscribeTitle: 'Baja de factura digital'
+        unsubscribeTitle: 'Baja de factura digital',
+        validation: 'Email invalido'
       }
     }
   }

@@ -1,6 +1,7 @@
 import { UTLabel } from '@widergy/energy-ui';
 import React from 'react';
 import { arrayOf, bool, func, string } from 'prop-types';
+import i18 from 'i18next';
 
 import Modal from 'app/components/Modal';
 import { modalTypes } from 'types/modalTypes';
@@ -16,8 +17,8 @@ const DigitalBillingModal = ({
   modalState
 }) => (
   <Modal
-    cancelText={modalState.cancelText}
-    ctaText={modalState.ctaText}
+    cancelText={i18.t('digitalBills:modal.cancel')}
+    ctaText={i18.t('digitalBills:modal.accept')}
     disableCta={disableCta}
     handleCancel={handleCancel}
     handleCta={() => handleCta(modalState.action)}

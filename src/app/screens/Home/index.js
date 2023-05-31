@@ -62,27 +62,21 @@ const Home = ({
   }, [digitalBilling]);
 
   const [inputValue, setInputValue] = useState('');
-  const [modalStatus, setModalStatus] = useState(modalState.closed);
+  const [modalDefinitions, setModalDefinitions] = useState(modalState.closed);
 
   const handleCta = action => {
-    if (action === 'modify') {
-      dispatch(BillsActions.digitalBillingUpdate(inputValue));
-      setModalStatus(modalState.closed);
-    }
+    if (action === 'modify') dispatch(BillsActions.digitalBillingUpdate(inputValue));
 
-    if (action === 'subscribe') {
-      dispatch(BillsActions.digitalBillingSubscription(inputValue));
-      setModalStatus(modalState.closed);
-    }
+    if (action === 'subscribe') dispatch(BillsActions.digitalBillingSubscription(inputValue));
 
-    if (action === 'unsubscribe') {
-      dispatch(BillsActions.digitalBillingUnsubscription(inputValue));
-      setModalStatus(modalState.closed);
-    }
+    if (action === 'unsubscribe') dispatch(BillsActions.digitalBillingUnsubscription(inputValue));
+
+    setModalDefinitions(modalState.closed);
+    setInputValue('');
   };
 
   const openModal = action => {
-    setModalStatus(modalState[action]);
+    setModalDefinitions(modalState[action]);
   };
 
   const handleInput = e => {
@@ -92,7 +86,7 @@ const Home = ({
   const validateEmail = useMemo(() => !!inputValue.match(/^\S+@\S+\.\S+$/), [inputValue]);
 
   const handleCancel = () => {
-    setModalStatus(modalState.closed);
+    setModalDefinitions(modalState.closed);
     setInputValue('');
   };
 
@@ -137,15 +131,15 @@ const Home = ({
         </UTLoading>
       </div>
 
-      {modalStatus.showModal && currentAccount && (
+      {modalDefinitions && currentAccount && (
         <DigitalBillingModal
           contactEmails={currentAccount.contact_emails}
-          disableCta={modalStatus.action === 'unsubscribe' ? false : !validateEmail}
+          disableCta={modalDefinitions.action === 'unsubscribe' ? false : !validateEmail}
           handleCancel={handleCancel}
           handleCta={handleCta}
-          modalState={modalStatus}
+          modalState={modalDefinitions}
         >
-          {modalStatus.action !== 'unsubscribe' && (
+          {modalDefinitions.action !== 'unsubscribe' && (
             <Fragment>
               <UTLabel classes={{ root: styles['modal-content'] }}>
                 {i18.t('digitalBills:modal.modifyNew')}
@@ -159,7 +153,7 @@ const Home = ({
                 autoFocus
               />
               {!validateEmail && !!inputValue.length && (
-                <span className={styles.validation}>Email invalido</span>
+                <span className={styles.validation}>{i18.t('digitalBills:modal.validation')}</span>
               )}
             </Fragment>
           )}
