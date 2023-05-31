@@ -10,6 +10,7 @@ import { PAYMENTS_HISTORY } from 'constants/routes';
 
 import styles from './styles.module.scss';
 import { columns } from './constants';
+import { formatDatetime } from './utils';
 
 const Payments = ({ payments, loading, dispatch }) => {
   useEffect(() => {
@@ -31,7 +32,7 @@ const Payments = ({ payments, loading, dispatch }) => {
           rowCell: styles.rowCell,
           responsiveRow: styles.rowHover
         }}
-        data={payments}
+        data={payments.map(payment => ({ ...payment, datetime: formatDatetime(payment.datetime) }))}
         columns={columns}
         onRowClick={(_, payment) => handleClick(payment)}
         disablePagination
