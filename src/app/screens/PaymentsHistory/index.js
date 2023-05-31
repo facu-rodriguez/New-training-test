@@ -59,7 +59,6 @@ const PaymentsHistory = ({ payments, paymentsError, paymentsLoading, dispatch })
           <div>
             {i18.t('Payments:error')}
             <button className={styles.reload} onClick={handleReload}>
-              {' '}
               {i18.t('Payments:here')}
             </button>
           </div>
