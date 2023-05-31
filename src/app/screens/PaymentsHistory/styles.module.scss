@@ -1,6 +1,7 @@
 @import 'scss/variables/_sizes.scss';
 @import 'scss/variables/_fontSizes.scss';
 @import '_general.scss';
+@import '_colors.scss';
 
 $border: 1px solid #000;
 $hover-color: hsla(0, 0%, 0%, 0.247);
@@ -8,38 +9,16 @@ $table-color: #FFF;
 
 .title {
   font-size: #{$large};
-  padding-top: 40px;
+  margin-bottom: 20px;
+  margin-top: 40px;
   text-align: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 40px;
+.tableContainer {
+  margin: auto;
+  width: min-content;
 }
 
-.tableRow {
-  background-color: $table-color;
-  border: $border;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: row;
-}
-
-.tableRow:last-child {
-  border-bottom: $border;
-}
-
-.tableRow:hover {
-  background-color: $hover-color;
-}
-
-.rowItem {
-  border-right: $border;
-  padding: 10px;
-  width: 1000px;
-}
-
-.rowItem:last-child {
-  border-right: 0;
+.rowHover:hover {
+  background-color: $disabled-gray !important; //No logro hacer que esto funcione
 }

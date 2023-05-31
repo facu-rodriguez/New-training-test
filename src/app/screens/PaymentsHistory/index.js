@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { UTLabel, UTLoading } from '@widergy/energy-ui';
+import { UTLabel, UTLoading, UTTable } from '@widergy/energy-ui';
 import { bool } from 'prop-types';
 
 import PaymentsActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
-import AppConfig from 'config/appConfig';
 import { PAYMENTS_HISTORY } from 'constants/routes';
 
 import styles from './styles.module.scss';
+import { columns } from './constants';
 
 const Payments = ({ payments, loading, dispatch }) => {
   useEffect(() => {
@@ -21,33 +21,22 @@ const Payments = ({ payments, loading, dispatch }) => {
     dispatch(push(`${PAYMENTS_HISTORY}/${payment.datetime}`));
   };
 
-  const filterObject = (obj, filters) =>
-    Object.entries(
-      Object.keys(obj)
-        .filter(key => filters.includes(key))
-        .reduce((newObj, key) => {
-          newObj[key] = obj[key];
-          return newObj;
-        }, {})
-    );
-
-  const newPayments = [...payments];
-
   return (
-    <>
-      <UTLoading loading={loading}>
-        <UTLabel classes={{ root: styles.title }}>Listado de Pagos</UTLabel>
-        <div className={styles.container}>
-          {newPayments.map(payment => (
-            <button className={styles.tableRow} onClick={() => handleClick(payment)}>
-              {filterObject(payment, AppConfig.paymentsHistory.fields).map(property => (
-                <UTLabel classes={{ root: styles.rowItem }}>{property[1]}</UTLabel>
-              ))}
-            </button>
-          ))}
-        </div>
-      </UTLoading>
-    </>
+    <UTLoading loading={loading}>
+      <UTLabel classes={{ root: styles.title }}>Listado de Pagos</UTLabel>
+      <UTTable
+        classNames={{
+          table: styles.tableContainer,
+          headerCell: styles.headerCell,
+          rowCell: styles.rowCell,
+          responsiveRow: styles.rowHover
+        }}
+        data={payments}
+        columns={columns}
+        onRowClick={(_, payment) => handleClick(payment)}
+        disablePagination
+      />
+    </UTLoading>
   );
 };
 

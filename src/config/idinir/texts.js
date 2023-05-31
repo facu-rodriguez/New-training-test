@@ -23,6 +23,10 @@ export default {
     },
     Payments: {
       goToList: 'Listado de Pagos',
+      datetime: 'Fecha',
+      client_number: 'Cliente',
+      status_label: 'Estado',
+      amount: 'Monto',
       Item: {
         client_number: 'Numero de cliente',
         datetime: 'Fecha',
