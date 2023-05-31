@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { UTLabel, UTLoading, UTTable } from '@widergy/energy-ui';
 import { bool } from 'prop-types';
+import dayjs from 'dayjs';
 
 import PaymentsActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
@@ -10,7 +11,6 @@ import { PAYMENTS_HISTORY } from 'constants/routes';
 
 import styles from './styles.module.scss';
 import { columns } from './constants';
-import { formatDatetime } from './utils';
 
 const Payments = ({ payments, loading, dispatch }) => {
   useEffect(() => {
@@ -32,7 +32,10 @@ const Payments = ({ payments, loading, dispatch }) => {
           rowCell: styles.rowCell,
           responsiveRow: styles.rowHover
         }}
-        data={payments.map(payment => ({ ...payment, datetime: formatDatetime(payment.datetime) }))}
+        data={payments.map(payment => ({
+          ...payment,
+          datetime: dayjs(payment.datetime).format('DD/MM/YYYY')
+        }))}
         columns={columns}
         onRowClick={(_, payment) => handleClick(payment)}
         disablePagination
