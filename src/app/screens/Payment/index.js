@@ -49,9 +49,10 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
           <div className={styles.container}>
             {Object.keys(currentPayment).map(key =>
               currentPayment[key] ? (
-                <UTLabel classes={{ root: styles.item }}>
-                  {i18.t(`Payments:${key}`)}: {formatValue(currentPayment[key])}
-                </UTLabel>
+                <div className={styles.item}>
+                  <UTLabel classes={{ root: styles.itemTitle }}>{i18.t(`Payments:${key}`)}:</UTLabel>
+                  <UTLabel classes={{ root: styles.itemValue }}>{formatValue(currentPayment[key])}</UTLabel>
+                </div>
               ) : (
                 <></>
               )

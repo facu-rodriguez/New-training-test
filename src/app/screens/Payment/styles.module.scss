@@ -14,7 +14,6 @@ $item-height: 250px;
 
 .container {
   align-items: flex-start;
-  background: linear-gradient(0deg, $gradient1-color 21%, $gradient2-color 81%, $gradient3-color 100%);
   background-repeat: no-repeat;
   background-size: 12px 400px;
   border: 1px solid $secondary-color;
@@ -25,7 +24,18 @@ $item-height: 250px;
   height: calc(100% - #{$topbar-heigth});
   margin: auto;
   margin-top: 80px;
-  padding: 60px;
+  padding: 40px;
   text-transform: capitalize;
   width: 700px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 3px 0;
+}
+
+.itemTitle {
+  width: 200px;
 }
