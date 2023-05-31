@@ -4,6 +4,7 @@ import { UTLabel, UTButton, UTLoading } from '@widergy/energy-ui';
 import { arrayOf, bool } from 'prop-types';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom';
 import i18 from 'i18next';
+import dayjs from 'dayjs';
 
 import PaymentActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
@@ -14,13 +15,13 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
   const { paymentId } = useParams();
   const history = useHistory();
 
-  const findPaymentById = id => payments.find(({ datetime }) => id === datetime);
+  const findPaymentById = id => payments.find(({ datetime }) => id === dayjs(datetime).format('DD-MM-YYYY'));
 
   useEffect(() => {
     if (!currentPayment) dispatch(PaymentActions.getPayments());
   }, []);
 
-  const setIfNull = payment => {
+  const setCurrentPaymentIfNull = payment => {
     if (!payment) dispatch(PaymentActions.setCurrentPayment(findPaymentById(paymentId)));
   };
 
@@ -44,7 +45,7 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
 
   return (
     <>
-      {setIfNull(currentPayment)}
+      {setCurrentPaymentIfNull(currentPayment)}
       <UTLoading loading={loading}>
         {currentPayment ? (
           <div className={styles.container}>
