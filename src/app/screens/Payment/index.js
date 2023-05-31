@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { UTLabel, UTLoading } from '@widergy/energy-ui';
 import { arrayOf, bool } from 'prop-types';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import i18 from 'i18next';
 
 import PaymentActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
@@ -21,8 +22,6 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
   const setIfNull = payment => {
     if (!payment) dispatch(PaymentActions.setCurrentPayment(findPaymentById(paymentId)));
   };
-
-  const formatKey = str => str.replace(/_/g, ' ');
 
   const formatValue = value => {
     const isDate = Date.parse(value);
@@ -51,7 +50,7 @@ const Payment = ({ payments, currentPayment, loading, dispatch }) => {
             {Object.keys(currentPayment).map(key =>
               currentPayment[key] ? (
                 <UTLabel classes={{ root: styles.item }}>
-                  {formatKey(key)}: {formatValue(currentPayment[key])}
+                  {i18.t(`Payments:${key}`)}: {formatValue(currentPayment[key])}
                 </UTLabel>
               ) : (
                 <></>

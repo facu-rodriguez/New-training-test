@@ -17,7 +17,6 @@ const Payments = ({ payments, loading, dispatch }) => {
   }, []);
 
   const handleClick = async payment => {
-    console.log(payment);
     await dispatch(PaymentsActions.setCurrentPayment(payment));
     dispatch(push(`${PAYMENTS_HISTORY}/${payment.datetime}`));
   };

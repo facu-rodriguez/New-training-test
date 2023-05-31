@@ -20,6 +20,15 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    Payments: {
+      goToList: 'Listado de Pagos',
+      client_number: 'Numero de cliente',
+      datetime: 'Fecha',
+      status: 'Estado',
+      payment_method: 'Metodo de Pago',
+      amount: 'Monto',
+      status_label: 'Etiqueta de Estado'
     }
   }
 };

@@ -69,7 +69,7 @@ const Home = ({
                   classNames={{ root: styles.paymentsListButton }}
                   Icon={DescriptionIcon}
                 >
-                  Listado de Pagos
+                  {i18.t('Payments:goToList')}
                 </UTButton>
               </div>
             </div>
