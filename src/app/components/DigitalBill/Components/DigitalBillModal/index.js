@@ -7,6 +7,7 @@ import { bool, string } from 'prop-types';
 import DigitalBillsActions from 'redux/bills/actions';
 import { checkEmail } from 'utils/checkEmailsUtils';
 import { digitalTypes } from 'types/digitalTypes';
+import { DELETE_METHOD, PUT_METHOD, POST_METHOD } from 'constants/actionMethod';
 
 import styles from './styles.module.scss';
 
@@ -21,15 +22,15 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
 
   const handleConfirm = typeAction => {
     switch (typeAction) {
-      case 'modificar':
+      case PUT_METHOD:
         dispatch(DigitalBillsActions.putDigitalBills(modifyInput));
         break;
 
-      case 'baja':
+      case DELETE_METHOD:
         dispatch(DigitalBillsActions.deleteDigitalBills());
         break;
 
-      case 'alta':
+      case POST_METHOD:
         dispatch(DigitalBillsActions.postDigitalBills(modifyInput));
         break;
 
@@ -41,15 +42,15 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
   const handleFinalClose = () => {
     onHide(false);
     switch (type) {
-      case 'modificar':
+      case PUT_METHOD:
         dispatch(DigitalBillsActions.clearDigitalBills('putDigitalBillsSuccess'));
         break;
 
-      case 'baja':
+      case DELETE_METHOD:
         dispatch(DigitalBillsActions.clearDigitalBills('deleteDigitalBillsSuccess'));
         break;
 
-      case 'alta':
+      case POST_METHOD:
         dispatch(DigitalBillsActions.clearDigitalBills('postDigitalBillsSuccess'));
         break;
 
@@ -67,13 +68,13 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
           </div>
 
           <div className={styles.DigitalBillModalBody}>
-            {type !== 'alta' && (
+            {type !== POST_METHOD && (
               <UTLabel>
                 {i18.t(`DigitalBill:actions:${type}:body:text`)} ➜ {email}
               </UTLabel>
             )}
 
-            {(type === 'modificar' || type === 'alta') && (
+            {(type === PUT_METHOD || type === POST_METHOD) && (
               <Fragment>
                 <UTLabel className={styles.DigitalBillModalBodySecondText}>
                   {i18.t(`DigitalBill:actions:${type}:body:inputText`)}
@@ -96,7 +97,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
             </UTButton>
 
             <UTButton
-              disabled={(type === 'modificar' || type === 'alta') && !emailIsValid}
+              disabled={(type === PUT_METHOD || type === POST_METHOD) && !emailIsValid}
               colorTheme="success"
               onClick={() => handleConfirm(type)}
             >

@@ -3,6 +3,8 @@ import i18 from 'i18next';
 import { UTLabel, UTButton } from '@widergy/energy-ui';
 import { bool, arrayOf, string } from 'prop-types';
 
+import { DELETE_METHOD, POST_METHOD, PUT_METHOD } from 'constants/actionMethod';
+
 import styles from './styles.module.scss';
 import DigitalBillModal from './Components/DigitalBillModal';
 
@@ -22,15 +24,15 @@ const DigitalBill = ({ billType, email }) => {
       <div className={styles.DigitalBillsBtnContainer}>
         {billType ? (
           <Fragment>
-            <UTButton colorTheme="success" onClick={() => handleModal('modificar')}>
+            <UTButton colorTheme="success" onClick={() => handleModal(PUT_METHOD)}>
               {i18.t(`DigitalBill:actions:modificar:shortTitle`)}
             </UTButton>
-            <UTButton colorTheme="error" onClick={() => handleModal('baja')}>
+            <UTButton colorTheme="error" onClick={() => handleModal(DELETE_METHOD)}>
               {i18.t(`DigitalBill:actions:baja:shortTitle`)}
             </UTButton>
           </Fragment>
         ) : (
-          <UTButton colorTheme="success" onClick={() => handleModal('alta')}>
+          <UTButton colorTheme="success" onClick={() => handleModal(POST_METHOD)}>
             {i18.t(`DigitalBill:actions:alta:shortTitle`)}
           </UTButton>
         )}
