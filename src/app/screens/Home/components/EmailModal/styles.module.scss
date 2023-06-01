@@ -1,0 +1,39 @@
+@import 'scss/variables/_fontSizes.scss';
+@import '_colors.scss';
+
+%modalSection {
+  margin-top: 25px;
+}
+
+.modalSection {
+  @extend %modalSection;
+}
+
+.modalButtonSection {
+  @extend %modalSection;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.modalTitle {
+  font-size: $large;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.modalText {
+  display: inline;
+}
+
+%modalField {
+  border-radius: 5px;
+  display: inline;
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+.modalInfo {
+  @extend %modalField;
+  background-color: #{$input-primary};
+}

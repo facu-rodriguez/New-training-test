@@ -10,12 +10,12 @@ export const actions = createTypes(
 const privateActionCreators = {
   getAccountsSuccess: payload => ({ type: actions.GET_ACCOUNTS_SUCCESS, payload, target: 'accounts' }),
   getAccountsFailure: payload => ({ type: actions.GET_ACCOUNTS_FAILURE, payload, target: 'accounts' }),
-  updateEmailsSuccess: payload => ({ type: actions.UPDATE_EMAILS_SUCCESS, payload, target: 'accounts' }),
-  updateEmailsFailure: payload => ({ type: actions.UPDATE_EMAILS_FAILURE, payload, target: 'accounts' }),
-  createEmailsSuccess: payload => ({ type: actions.CREATE_EMAILS_SUCCESS, payload, target: 'accounts' }),
-  createEmailsFailure: payload => ({ type: actions.CREATE_EMAILS_FAILURE, payload, target: 'accounts' }),
-  deleteEmailsSuccess: payload => ({ type: actions.DELETE_EMAILS_SUCCESS, payload, target: 'accounts' }),
-  deleteEmailsFailure: payload => ({ type: actions.DELETE_EMAILS_FAILURE, payload, target: 'accounts' })
+  updateEmailsSuccess: payload => ({ type: actions.UPDATE_EMAILS_SUCCESS, payload, target: 'digitalBill' }),
+  updateEmailsFailure: payload => ({ type: actions.UPDATE_EMAILS_FAILURE, payload, target: 'digitalBill' }),
+  createEmailsSuccess: payload => ({ type: actions.CREATE_EMAILS_SUCCESS, payload, target: 'digitalBill' }),
+  createEmailsFailure: payload => ({ type: actions.CREATE_EMAILS_FAILURE, payload, target: 'digitalBill' }),
+  deleteEmailsSuccess: payload => ({ type: actions.DELETE_EMAILS_SUCCESS, payload, target: 'digitalBill' }),
+  deleteEmailsFailure: payload => ({ type: actions.DELETE_EMAILS_FAILURE, payload, target: 'digitalBill' })
 };
 
 export const actionCreators = {
@@ -30,14 +30,14 @@ export const actionCreators = {
       dispatch(privateActionCreators.getAccountsFailure(response.data.error));
     }
   },
-  updateEmails: (emails, id) => async dispatch => {
-    dispatch({ type: actions.UPDATE_EMAILS, target: 'accounts' });
+  updateEmails: (emails, id) => async (dispatch, getState) => {
+    dispatch({ type: actions.UPDATE_EMAILS, target: 'digitalBill' });
     const response = await AccountService.updateEmails(emails);
     if (response.ok) {
-      const newAccounts = await AccountService.getAccounts();
+      const newAccounts = await getState().accounts.accounts;
 
       const hasSameId = account => account.cuenta_id === id;
-      await newAccounts.data.forEach(account => {
+      await newAccounts.forEach(account => {
         if (hasSameId(account)) {
           account.contact_emails = emails;
           dispatch(actionCreators.setCurrentAccount(account));
@@ -47,14 +47,14 @@ export const actionCreators = {
       dispatch(privateActionCreators.updateEmailsSuccess(newAccounts.data));
     } else dispatch(privateActionCreators.updateEmailsFailure(response.data.error));
   },
-  deleteEmails: (emails, id) => async dispatch => {
-    dispatch({ type: actions.DELETE_EMAILS, target: 'accounts' });
+  deleteEmails: (emails, id) => async (dispatch, getState) => {
+    dispatch({ type: actions.DELETE_EMAILS, target: 'digitalBill' });
     const response = await AccountService.deleteEmails(emails);
     if (response.ok) {
-      const newAccounts = await AccountService.getAccounts();
+      const newAccounts = await getState().accounts.accounts;
 
       const hasSameId = account => account.cuenta_id === id;
-      await newAccounts.data.forEach(account => {
+      await newAccounts.forEach(account => {
         if (hasSameId(account)) {
           account.contact_emails = emails;
           account.adherido_factura_digital = false;
@@ -64,14 +64,14 @@ export const actionCreators = {
       dispatch(privateActionCreators.deleteEmailsSuccess(newAccounts.data));
     } else dispatch(privateActionCreators.deleteEmailsFailure(response.data.error));
   },
-  createEmails: (emails, id) => async dispatch => {
-    dispatch({ type: actions.CREATE_EMAILS, target: 'accounts' });
+  createEmails: (emails, id) => async (dispatch, getState) => {
+    dispatch({ type: actions.CREATE_EMAILS, target: 'digitalBill' });
     const response = await AccountService.createEmails(emails);
     if (response.ok) {
-      const newAccounts = await AccountService.getAccounts();
+      const newAccounts = await getState().accounts.accounts;
 
       const hasSameId = account => account.cuenta_id === id;
-      await newAccounts.data.forEach(account => {
+      await newAccounts.forEach(account => {
         if (hasSameId(account)) {
           account.contact_emails = emails;
           account.adherido_factura_digital = true;

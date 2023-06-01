@@ -51,9 +51,9 @@ $margin-size: 40px;
 .facturaDigitalBefore {
   background: linear-gradient(
     90deg,
-    #{$primary-variant-1} 20%,
-    #{$primary-variant-2} 80%,
-    #{$primary-variant-3} 100%
+    $primary-variant-1 20%,
+    $primary-variant-2 80%,
+    $primary-variant-3 100%
   );
 }
 
@@ -72,21 +72,20 @@ $margin-size: 40px;
 }
 
 .facturaDigitalTitle {
-  color: #{$white};
+  color: $white;
   padding: 0 40px;
   width: 200px;
 }
 
 .facturaDigitalButton {
-  border-color: #{$white} !important;
-  color: #{$white} !important;
+  border-color: $white !important;
+  color: $white !important;
   margin-right: 20px;
   min-width: 100px !important;
 }
 
 .modal {
-  background-color: #{$gray};
-  display: none;
+  background-color: $gray;
   height: 100%;
   left: 0;
   overflow: auto;
@@ -97,7 +96,7 @@ $margin-size: 40px;
 }
 
 .modalContent {
-  background-color: #{$white};
+  background-color: $white;
   border-radius: 10px;
   margin: auto;
   margin-top: 13%;
@@ -105,36 +104,6 @@ $margin-size: 40px;
   padding: 40px;
   transition: opacity 0.5s, margin-top 0.5s;
   width: 70%;
-}
-
-.modalComponent {
-  display: none;
-}
-
-.modalTitle {
-  font-size: #{$large};
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.modalSection {
-  margin-top: 25px;
-}
-
-.modalText {
-  display: inline;
-}
-
-%modalField {
-  border-radius: 5px;
-  display: inline;
-  margin-left: 10px;
-  padding: 5px 10px;
-}
-
-.modalInfo {
-  @extend %modalField;
-  background-color: #{$input-primary};
 }
 
 @media (max-width: 1800px) {

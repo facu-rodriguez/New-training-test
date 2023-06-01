@@ -21,26 +21,24 @@ export default {
       deleteEmail: 'Darse de Baja',
       createEmail: 'Alta'
     },
+    Commons: {
+      cancel: 'Cancelar',
+      accept: 'Aceptar'
+    },
     UpdateModal: {
       title: 'Modificar adhesión a factura digital',
       currentEmail: 'Su email actual es: ',
       inputTitle: 'Ingrese el nuevo email a adherir: ',
-      cancel: 'Cancelar',
-      accept: 'Aceptar',
       emailTip: 'Ingrese un email valido',
       exampleEmail: 'example@example.com'
     },
     DeleteModal: {
       title: 'Baja de factura digital',
-      body: 'Usted está a punto de deshaderirse de factura digital',
-      cancel: 'Cancelar',
-      accept: 'Aceptar'
+      body: 'Usted está a punto de deshaderirse de factura digital'
     },
     CreateModal: {
       title: 'Adhesion a factura digital',
       inputTitle: 'Ingrese el email en el cual quiere recibir su factura',
-      cancel: 'Cancelar',
-      accept: 'Aceptar',
       emailTip: 'Ingrese un email valido',
       exampleEmail: 'example@example.com'
     }

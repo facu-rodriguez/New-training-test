@@ -5,7 +5,7 @@ import i18 from 'i18next';
 
 import { accountType } from 'types/accountTypes';
 
-import styles from '../../styles.module.scss';
+import styles from './styles.module.scss';
 
 const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
   let modalSettings = {};
@@ -18,8 +18,6 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
         showInput: true,
         inputTitle: i18.t('UpdateModal:inputTitle'),
         currentEmail: i18.t('UpdateModal:currentEmail'),
-        cancel: i18.t('UpdateModal:cancel'),
-        accept: i18.t('UpdateModal:accept'),
         emailTip: i18.t('UpdateModal:emailTip'),
         exampleEmail: i18.t('UpdateModal:exampleEmail')
       };
@@ -28,9 +26,7 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
       modalSettings = {
         title: i18.t('DeleteModal:title'),
         showInput: false,
-        body: i18.t('DeleteModal:body'),
-        cancel: i18.t('DeleteModal:cancel'),
-        accept: i18.t('DeleteModal:accept')
+        body: i18.t('DeleteModal:body')
       };
       break;
     case 'create':
@@ -38,8 +34,6 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
         title: i18.t('CreateModal:title'),
         showInput: true,
         inputTitle: i18.t('CreateModal:inputTitle'),
-        cancel: i18.t('CreateModal:cancel'),
-        accept: i18.t('CreateModal:accept'),
         emailTip: i18.t('CreateModal:emailTip'),
         exampleEmail: i18.t('CreateModal:exampleEmail')
       };
@@ -59,15 +53,14 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
   return (
     <Fragment>
       <UTLabel classes={{ root: styles.modalTitle }}>{modalSettings.title}</UTLabel>
-      {modalType === 'update' ? (
+      {modalType === 'update' && (
         <div className={styles.modalSection}>
           <UTLabel classes={{ root: styles.modalText }}>{modalSettings.currentEmail}</UTLabel>
           <UTLabel classes={{ root: styles.modalInfo }}>{account.contact_emails[0]}</UTLabel>
         </div>
-      ) : modalType === 'delete' ? (
-        <UTLabel>{modalSettings.body}</UTLabel>
-      ) : null}
-      {modalSettings.showInput ? (
+      )}
+      {modalType === 'delete' && <UTLabel>{modalSettings.body}</UTLabel>}
+      {modalSettings.showInput && (
         <div className={styles.modalSection}>
           <UTLabel classes={{ root: styles.modalText }}>{modalSettings.inputTitle}</UTLabel>
           <UTTextInput
@@ -79,14 +72,14 @@ const EmailModal = ({ account, modalType, onCancel, onAccept }) => {
             error={!isValid && newEmail.length > 0}
           />
         </div>
-      ) : null}
-      <div className={styles.modalSection}>
-        <UTButton onClick={onCancel}>{i18.t('UpdateModal:cancel')}</UTButton>
+      )}
+      <div className={styles.modalButtonSection}>
+        <UTButton onClick={onCancel}>{i18.t('Commons:cancel')}</UTButton>
         <UTButton
           disabled={!isValid && modalType !== 'delete'}
           onClick={() => onAccept([newEmail], account.cuenta_id)}
         >
-          {i18.t('UpdateModal:accept')}
+          {i18.t('Commons:accept')}
         </UTButton>
       </div>
     </Fragment>

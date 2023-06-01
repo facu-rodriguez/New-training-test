@@ -11,7 +11,7 @@ export default {
   initialView: {
     paymentHistoryButton: { enabled: true },
     billsHistoryButton: { enabled: false },
-    emailButton: { enabled: false }
+    digitalBillButton: { enabled: false }
   },
   billsHistory: {
     enabled: false

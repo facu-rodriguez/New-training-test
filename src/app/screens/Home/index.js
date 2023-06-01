@@ -36,25 +36,26 @@ const Home = ({
   }, []);
 
   const [modalType, setModalType] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = type => {
-    document.getElementById('modal').style.display = 'block';
+  const openModal = async type => {
+    await setIsModalOpen(true);
 
     setModalType(type);
 
     const modal = document.getElementById(`modal-content`);
-    modal.style.display = 'block';
     setTimeout(() => {
       modal.style.opacity = 1;
       modal.style.marginTop = `${10}%`;
     }, 10);
   };
 
-  const closeModal = modalBg => {
+  const closeModal = () => {
     const modal = document.getElementById('modal-content');
     modal.style.opacity = 0;
     modal.style.marginTop = `${13}%`;
-    modalBg.style.display = 'none';
+
+    setIsModalOpen(false);
   };
 
   window.onclick = event => {
@@ -104,7 +105,7 @@ const Home = ({
               <div className={styles.rightSection}>
                 <LastBill currentBill={lastBill} loading={lastBillloading} />
               </div>
-              {appConfig.initialView.emailButton.enabled ? (
+              {appConfig.initialView.digitalBillButton.enabled && (
                 <div className={styles.facturaDigital}>
                   <div className={styles.facturaDigitalBefore}>
                     <div className={styles.facturaDigitalAfter}>
@@ -142,18 +143,20 @@ const Home = ({
                     </div>
                   </div>
                 </div>
-              ) : null}
+              )}
             </div>
-            <div id="modal" className={styles.modal}>
-              <div id="modal-content" className={styles.modalContent}>
-                <EmailModal
-                  account={currentAccount}
-                  modalType={modalType}
-                  onCancel={() => closeModal(document.getElementById('modal'))}
-                  onAccept={handleAccept}
-                />
+            {isModalOpen && (
+              <div id="modal" className={styles.modal}>
+                <div id="modal-content" className={styles.modalContent}>
+                  <EmailModal
+                    account={currentAccount}
+                    modalType={modalType}
+                    onCancel={() => closeModal()}
+                    onAccept={handleAccept}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </Fragment>
         )}
       </UTLoading>
