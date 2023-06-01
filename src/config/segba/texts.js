@@ -23,6 +23,7 @@ export default {
     },
     Payments: {
       goToList: 'Listado de Pagos',
+      paymentsHistory: 'Listado de Pagos',
       datetime: 'Fecha',
       payment_method: 'Metodo de Pago',
       status_label: 'Estado',

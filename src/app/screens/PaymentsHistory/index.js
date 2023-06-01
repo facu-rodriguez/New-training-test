@@ -4,6 +4,7 @@ import { push } from 'connected-react-router';
 import { UTLabel, UTLoading, UTTable } from '@widergy/energy-ui';
 import { bool } from 'prop-types';
 import dayjs from 'dayjs';
+import i18 from 'i18next';
 
 import PaymentsActions from 'redux/payments/actions';
 import { paymentType } from 'types/paymentTypes';
@@ -24,7 +25,7 @@ const Payments = ({ payments, loading, dispatch }) => {
 
   return (
     <UTLoading loading={loading}>
-      <UTLabel classes={{ root: styles.title }}>Listado de Pagos</UTLabel>
+      <UTLabel classes={{ root: styles.title }}>{i18.t('Payments:paymentsHistory')}</UTLabel>
       <UTTable
         classNames={{
           table: styles.tableContainer,

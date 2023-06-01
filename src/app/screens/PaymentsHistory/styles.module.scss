@@ -3,12 +3,8 @@
 @import '_general.scss';
 @import '_colors.scss';
 
-$border: 1px solid #000;
-$hover-color: hsla(0, 0%, 0%, 0.247);
-$table-color: #FFF;
-
 .title {
-  font-size: #{$large};
+  font-size: $large;
   margin-bottom: 20px;
   margin-top: 40px;
   text-align: center;
