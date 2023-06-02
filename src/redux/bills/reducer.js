@@ -22,9 +22,11 @@ const reducerDescription = {
   ],
   override: {
     [actions.DELETE_DIGITAL_BILLS]: (state, action) =>
-      Immutable.merge(state, { digitalBills: action.payload }),
-    [actions.PUT_DIGITAL_BILLS]: (state, action) => Immutable.merge(state, { digitalBills: action.payload }),
-    [actions.POST_DIGITAL_BILLS]: (state, action) => Immutable.merge(state, { digitalBills: action.payload })
+      Immutable.merge(state, { digitalBills: action.payload || { mensaje: null } }),
+    [actions.PUT_DIGITAL_BILLS]: (state, action) =>
+      Immutable.merge(state, { digitalBills: action.payload || { mensaje: null } }),
+    [actions.POST_DIGITAL_BILLS]: (state, action) =>
+      Immutable.merge(state, { digitalBills: action.payload || { mensaje: null } })
   }
 };
 

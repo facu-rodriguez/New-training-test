@@ -61,7 +61,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
 
   return show ? (
     <section className={styles.DigitalBillModalContainer}>
-      {digitalBills?.mensaje === '' && !loading && !error ? (
+      {digitalBills.mensaje === '' && !loading && !error ? (
         <div className={styles.DigitalBillModalContainerData}>
           <div className={styles.DigitalBillModalTitle}>
             <h1>{i18.t(`DigitalBill:actions:${type}:title`)}</h1>
@@ -110,7 +110,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
           <UTButton colorTheme="primary" onClick={handleFinalClose}>
             {i18.t(`DigitalBill:close`)}
           </UTButton>
-          <UTLoading loading={loading}>
+          <UTLoading loading={!digitalBills.mensaje}>
             {error ? (
               <UTLabel>{error}</UTLabel>
             ) : (
