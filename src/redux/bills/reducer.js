@@ -20,7 +20,12 @@ const reducerDescription = {
     actions.DELETE_DIGITAL_BILLS,
     actions.POST_DIGITAL_BILLS
   ],
-  override: {}
+  override: {
+    [actions.DELETE_DIGITAL_BILLS]: (state, action) =>
+      Immutable.merge(state, { digitalBills: action.payload }),
+    [actions.PUT_DIGITAL_BILLS]: (state, action) => Immutable.merge(state, { digitalBills: action.payload }),
+    [actions.POST_DIGITAL_BILLS]: (state, action) => Immutable.merge(state, { digitalBills: action.payload })
+  }
 };
 
 export const reducer = createReducer(Immutable(defaultState), completeReducer(reducerDescription));

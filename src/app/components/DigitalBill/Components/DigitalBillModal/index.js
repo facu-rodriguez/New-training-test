@@ -43,15 +43,15 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
     onHide(false);
     switch (type) {
       case PUT_METHOD:
-        dispatch(DigitalBillsActions.clearDigitalBills('putDigitalBillsSuccess'));
+        dispatch(DigitalBillsActions.clearDigitalBills('PUT_DIGITAL_BILLS'));
         break;
 
       case DELETE_METHOD:
-        dispatch(DigitalBillsActions.clearDigitalBills('deleteDigitalBillsSuccess'));
+        dispatch(DigitalBillsActions.clearDigitalBills('DELETE_DIGITAL_BILLS'));
         break;
 
       case POST_METHOD:
-        dispatch(DigitalBillsActions.clearDigitalBills('postDigitalBillsSuccess'));
+        dispatch(DigitalBillsActions.clearDigitalBills('POST_DIGITAL_BILLS'));
         break;
 
       default:
@@ -61,7 +61,7 @@ const DigitalBillModal = ({ show, type, email, onHide, digitalBills, loading, er
 
   return show ? (
     <section className={styles.DigitalBillModalContainer}>
-      {digitalBills.mensaje === '' && !loading && !error ? (
+      {digitalBills?.mensaje === '' && !loading && !error ? (
         <div className={styles.DigitalBillModalContainerData}>
           <div className={styles.DigitalBillModalTitle}>
             <h1>{i18.t(`DigitalBill:actions:${type}:title`)}</h1>

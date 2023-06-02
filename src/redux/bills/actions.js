@@ -100,7 +100,7 @@ export const actionCreators = {
     }
   },
   clearDigitalBills: type => dispatch => {
-    dispatch(privateActionCreators[type](defaultState.digitalBills));
+    dispatch({ type: actions[type], payload: defaultState.digitalBills, target: 'digitalBills' });
   }
 };
 
