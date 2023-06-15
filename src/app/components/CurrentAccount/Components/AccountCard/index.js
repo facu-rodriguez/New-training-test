@@ -17,7 +17,7 @@ const AccountCard = ({ account }) => {
           </UTLabel>
         </div>
         <div className={styles.accountNumberAndAddres}>
-          <UTLabel>{i18.t('Account:accountNumber', { id })}</UTLabel>
+          <UTLabel>{i18.t('Accounts:accountNumber', { id })}</UTLabel>
           <UTLabel>{direccion}</UTLabel>
         </div>
       </div>

@@ -1,3 +1,5 @@
+// sass-lint:disable no-misspelled-properties
+
 @import 'scss/variables/_sizes.scss';
 @import '_colors.scss';
 
@@ -27,6 +29,7 @@ $margin-size: 40px;
 .leftSection {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   justify-content: space-between;
   width: 45%;
 }
@@ -36,5 +39,9 @@ $margin-size: 40px;
 }
 
 .billsListButton {
+  @extend %buttons;
+}
+
+.accountsListButton {
   @extend %buttons;
 }
