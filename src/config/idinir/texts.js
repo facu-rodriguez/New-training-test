@@ -1,8 +1,5 @@
 export default {
   es: {
-    Account: {
-      accountNumber: 'Cuenta N°: {{id}}'
-    },
     Bills: {
       billsListTitle: 'Factura actual',
       billsListFirstExpiration: '1er vencimiento',
@@ -15,6 +12,15 @@ export default {
     },
     Home: {
       noAccounts: 'No hay cuentas'
+    },
+    Accounts: {
+      accountsList: 'Listado de cuentas',
+      myAccounts: 'Mis cuentas',
+      noAccountsAvailable: 'No tiene cuentas disponibles',
+      accountNumber: 'Cuenta N°: {{id}}'
+    },
+    Commons: {
+      retry: 'Reintentar'
     }
   }
 };
