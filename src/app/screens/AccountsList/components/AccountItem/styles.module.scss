@@ -1,0 +1,70 @@
+// sass-lint:disable no-misspelled-properties
+
+@import 'scss/variables/_sizes.scss';
+@import '_colors.scss';
+@import 'scss/variables/_mediaQueries.scss';
+
+.container {
+  border-radius: 10px;
+  display: flex;
+  flex-basis: 49%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.card {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 !important;
+  width: 100%;
+}
+
+.selectedCard {
+  background-color: $primary-variant-1 !important;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+  width: 100%;
+}
+
+.bottomRow {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tag {
+  background: $gradient-vertical;
+  width: 0.5%;
+}
+
+@media #{$tablet} {
+  .container {
+    flex-basis: 100%;
+  }
+}
+
+@media #{$mobile} {
+  .container {
+    flex-basis: 100%;
+  }
+}
+
+@media #{$small-mobile} {
+  .bottomRow {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .holder {
+    max-width: 50%;
+  }
+}

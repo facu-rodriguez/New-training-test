@@ -1,0 +1,22 @@
+// sass-lint:disable no-misspelled-properties
+
+@import 'scss/variables/_sizes.scss';
+@import '_colors.scss';
+
+.title {
+  padding: 20px 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+.accountsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.loading {
+  height: 100vh;
+}
