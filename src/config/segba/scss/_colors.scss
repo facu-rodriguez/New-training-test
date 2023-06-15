@@ -15,6 +15,10 @@ $primary-variant-1: #25A7C1;
 $primary-variant-2: #27158E;
 $primary-variant-3: #0083D5;
 
+$light-01: #E6DCC2;
+$gradient-vertical: linear-gradient(180deg, $primary-variant-1 6%, $primary-variant-2 41%, $primary-variant-3 73%);
+$account-status-action-card: #1D5DFD;
+
 $shadow-color: #BFC3C8;
 
 // sass-lint:disable no-misspelled-properties
